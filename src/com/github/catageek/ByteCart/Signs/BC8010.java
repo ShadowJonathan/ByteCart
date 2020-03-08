@@ -168,6 +168,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
 				// trigger event
 				BlockFace bdest = router.WishToGo(From, direction, isTrain);
 				int ring = this.getRoutingTable().getDirectlyConnected(bdest);
+
 				SignPostRouteEvent event = new SignPostRouteEvent(this, ring);
 				Bukkit.getServer().getPluginManager().callEvent(event);
 

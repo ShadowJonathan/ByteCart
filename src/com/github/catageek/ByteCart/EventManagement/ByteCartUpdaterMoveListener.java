@@ -27,12 +27,13 @@ public class ByteCartUpdaterMoveListener implements Listener {
 	@EventHandler(ignoreCancelled = true)
 	public void onVehicleMoveEvent(VehicleMoveEvent event) {
 
-		Location loc = event.getFrom();
-		Integer from_x = loc.getBlockX();
-		Integer from_z = loc.getBlockZ();
-		loc = event.getTo();
-		int to_x = loc.getBlockX();
-		int to_z = loc.getBlockZ();
+		Location loc_from = event.getFrom();
+		int from_x = loc_from.getBlockX();
+		int from_z = loc_from.getBlockZ();
+
+		Location loc_to = event.getTo();
+		int to_x = loc_to.getBlockX();
+		int to_z = loc_to.getBlockZ();
 
 		// Check if the vehicle crosses a cube boundary
 		if(from_x == to_x && from_z == to_z)

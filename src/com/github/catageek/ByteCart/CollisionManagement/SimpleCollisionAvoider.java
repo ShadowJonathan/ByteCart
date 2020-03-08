@@ -16,7 +16,7 @@ public class SimpleCollisionAvoider extends AbstractCollisionAvoider implements 
 	private static final ExpirableMap<Location, Boolean> recentlyUsedMap = new ExpirableMap<Location, Boolean>(20, false, "recentlyUsed9000");
 	private static final ExpirableMap<Location, Boolean> hasTrainMap = new ExpirableMap<Location, Boolean>(14, false, "hastrain");
 
-	private RegistryOutput Lever1 = null, Lever2 = null, Active = null;
+	private RegistryOutput Lever1, Lever2, Active;
 	private final Location loc1;
 
 	private IntersectionSide.Side state;
@@ -26,6 +26,7 @@ public class SimpleCollisionAvoider extends AbstractCollisionAvoider implements 
 
 	SimpleCollisionAvoider(Triggable ic, org.bukkit.Location loc) {
 		super(loc);
+
 		if(ByteCart.debug)
 			ByteCart.log.info("ByteCart: new IntersectionSide() at " + loc);
 

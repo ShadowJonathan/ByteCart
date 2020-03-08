@@ -27,8 +27,7 @@ public final class PreloadChunkListener implements Listener {
 		int to_x = loc.getBlockX() >> 4;
 		int to_z = loc.getBlockZ() >> 4;
 
-		if(event.getVehicle() instanceof Minecart) // we care only of minecart
-		{
+		if(event.getVehicle() instanceof Minecart) { // we care only of minecart
 			// preload chunks
 			MathUtil.loadChunkAround(loc.getWorld(), to_x, to_z, 2);				
 		}
