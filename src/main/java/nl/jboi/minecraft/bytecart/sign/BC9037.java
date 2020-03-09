@@ -1,5 +1,8 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
+
 /**
  * Match IP ranges.
  * <p>
@@ -12,7 +15,7 @@ package nl.jboi.minecraft.bytecart.sign;
  */
 final class BC9037 extends AbstractBC9037 {
 
-    BC9037(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC9037(Block block, Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -30,5 +33,4 @@ final class BC9037 extends AbstractBC9037 {
     public final String getFriendlyName() {
         return "Range matcher";
     }
-
 }

@@ -5,16 +5,17 @@ import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.scheduler.BukkitRunnable;
-
 
 /**
  * A cart detector
  */
 final class BC7002 extends AbstractTriggeredSign implements Triggable {
 
-    BC7002(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7002(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -34,7 +35,6 @@ final class BC7002 extends AbstractTriggeredSign implements Triggable {
 
 //		ByteCart.myPlugin.getDelayedThreadManager().renew(getLocation(), 4, new Release(this));
         (new Release(this)).runTaskLater(ByteCart.myPlugin, 4);
-
     }
 
     @Override

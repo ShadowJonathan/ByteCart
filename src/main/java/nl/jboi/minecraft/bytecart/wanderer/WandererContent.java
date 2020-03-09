@@ -1,12 +1,12 @@
 package nl.jboi.minecraft.bytecart.wanderer;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.routing.BCCounter;
-import nl.jboi.minecraft.bytecart.routing.Metric;
 import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
 import nl.jboi.minecraft.bytecart.api.wanderer.InventoryContent;
 import nl.jboi.minecraft.bytecart.api.wanderer.RoutingTable;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.routing.BCCounter;
+import nl.jboi.minecraft.bytecart.routing.Metric;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,9 +15,6 @@ import java.util.*;
 
 public class WandererContent implements InventoryContent {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -9068486630910859194L;
     protected Map<Integer, Metric> tablemap = new HashMap<Integer, Metric>();
     private transient Inventory inventory = null;
@@ -152,7 +149,6 @@ public class WandererContent implements InventoryContent {
     public Player getPlayer() {
         return Bukkit.getPlayer(player);
     }
-
 
     /**
      * Get the id previously stored

@@ -11,13 +11,12 @@ interface CollisionAvoider {
      *
      * @return the value of the second position
      */
-	int getSecondpos();
+    int getSecondpos();
 
     /**
      * Add the second triggered IC to current CollisonAvoider
      *
      * @param t
      */
-	void Add(Triggable t);
-
+    void Add(Triggable t);
 }

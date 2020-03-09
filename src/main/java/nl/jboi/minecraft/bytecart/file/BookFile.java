@@ -12,7 +12,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * A class handling a file stored in a book
  */
@@ -27,7 +26,6 @@ public final class BookFile implements BCFile {
     private BookMeta book;
     private ItemStackMetaOutputStream outputstream;
     private boolean isClosed = false;
-
 
     /**
      * @param inventory the inventory
@@ -163,7 +161,7 @@ public final class BookFile implements BCFile {
 
     @Override
     public OutputStream getOutputStream() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book File has already been closed");
 
         if (outputstream != null)
@@ -175,7 +173,7 @@ public final class BookFile implements BCFile {
 
     @Override
     public BookInputStream getInputStream() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book File has already been closed");
 
         if (outputstream != null && outputstream.getBuffer().length != 0) {
@@ -187,7 +185,7 @@ public final class BookFile implements BCFile {
     @Override
     public void flush() throws IOException {
         if (outputstream != null) {
-            if (isClosed)
+            if (isClosed) // fixme simplify
                 throw new IOException("Book File has already been closed");
             outputstream.flush();
             book = outputstream.getBook();
@@ -204,7 +202,7 @@ public final class BookFile implements BCFile {
 
     @Override
     public String getDescription() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book File has already been closed");
         if (outputstream != null) {
             return outputstream.getBook().getTitle();
@@ -214,7 +212,7 @@ public final class BookFile implements BCFile {
 
     @Override
     public void setDescription(String s) throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book File has already been closed");
         if (outputstream != null) {
             outputstream.getBook().setTitle(s);

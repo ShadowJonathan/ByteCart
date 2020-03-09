@@ -1,19 +1,16 @@
 package nl.jboi.minecraft.bytecart;
 
-import org.bukkit.inventory.Inventory;
-
 /**
- * Represents a runnable that can updates its inventory variable
+ * Represents a runnable that can updates its internal parameter
  *
- * @param <T>
+ * @param <T> Type of the internal parameter
  */
 public interface ModifiableRunnable<T> extends Runnable {
 
     /**
-     * Updates the inventory variable
+     * Updates the parameter variable
      *
-     * @param inventory
+     * @param t Object to be set as parameter
      */
-    void SetParam(Inventory inventory);
-
+    void SetParam(T t);
 }

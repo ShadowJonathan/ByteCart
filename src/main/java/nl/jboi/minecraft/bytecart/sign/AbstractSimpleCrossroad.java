@@ -1,14 +1,8 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.collision.CollisionAvoiderBuilder;
-import nl.jboi.minecraft.bytecart.collision.SimpleCollisionAvoider;
-import nl.jboi.minecraft.bytecart.collision.SimpleCollisionAvoiderBuilder;
-import nl.jboi.minecraft.bytecart.hal.PinRegistry;
-import nl.jboi.minecraft.bytecart.io.OutputPin;
-import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide.Side;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryBoth;
@@ -16,6 +10,14 @@ import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.collision.CollisionAvoiderBuilder;
+import nl.jboi.minecraft.bytecart.collision.SimpleCollisionAvoider;
+import nl.jboi.minecraft.bytecart.collision.SimpleCollisionAvoiderBuilder;
+import nl.jboi.minecraft.bytecart.hal.PinRegistry;
+import nl.jboi.minecraft.bytecart.io.OutputPin;
+import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * An abstract class for T-intersection signs
@@ -25,9 +27,8 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
     protected CollisionAvoiderBuilder builder;
     private AddressRouted destination;
 
-
-    AbstractSimpleCrossroad(org.bukkit.block.Block block,
-                            org.bukkit.entity.Vehicle vehicle) {
+    AbstractSimpleCrossroad(Block block,
+                            Vehicle vehicle) {
         super(block, vehicle);
         builder = new SimpleCollisionAvoiderBuilder(this, block.getRelative(this.getCardinal(), 3).getLocation());
     }
@@ -54,7 +55,6 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
     protected final void addIOInv() {
         // Input[0] = destination region taken from Inventory, slot #0
 
-
         Address IPaddress = getDestinationAddress();
 
         if (IPaddress == null)
@@ -62,13 +62,11 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
 
         RegistryInput slot2 = IPaddress.getRegion();
 
-
         this.addInputRegistry(slot2);
 
         // Input[1] = destination track taken from cart, slot #1
 
         RegistryInput slot1 = IPaddress.getTrack();
-
 
         this.addInputRegistry(slot1);
 
@@ -78,7 +76,6 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
 
         this.addInputRegistry(slot0);
     }
-
 
     protected void manageWanderer(SimpleCollisionAvoider intersection) {
         // routing
@@ -95,7 +92,7 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
 
             this.addIO();
 
-            SimpleCollisionAvoider intersection = ByteCart.myPlugin.getCollisionAvoiderManager().<SimpleCollisionAvoider>getCollisionAvoider(builder);
+            SimpleCollisionAvoider intersection = ByteCart.myPlugin.getCollisionAvoiderManager().getCollisionAvoider(builder);
 
             if (!ByteCart.myPlugin.getWandererManager().isWanderer(getInventory())) {
 
@@ -119,7 +116,6 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
             }
 
             manageWanderer(intersection);
-
         } catch (ClassCastException e) {
             if (ByteCart.debug)
                 ByteCart.log.info("ByteCart : " + e.toString());
@@ -134,7 +130,6 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
             // there was no inventory in the cart
             return;
         }
-
     }
 
     protected final AddressRouted getDestinationAddress() {
@@ -154,7 +149,7 @@ abstract class AbstractSimpleCrossroad extends AbstractTriggeredSign implements 
     }
 
     @Override
-    public final org.bukkit.block.Block getCenter() {
+    public final Block getCenter() {
         return this.getBlock();
     }
 

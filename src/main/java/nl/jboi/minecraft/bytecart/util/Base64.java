@@ -2,7 +2,6 @@ package nl.jboi.minecraft.bytecart.util;
 
 import java.util.Arrays;
 
-
 public class Base64 {
     private static final char[] CA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     private static final int[] IA = new int[256];
@@ -103,7 +102,6 @@ public class Base64 {
         }
         return dArr;
     }
-
 
     public static String encodeToString(byte[] sArr, boolean lineSep) {
         // Reuse char[] since we can't create a String incrementally anyway and StringBuffer/Builder would be slower.

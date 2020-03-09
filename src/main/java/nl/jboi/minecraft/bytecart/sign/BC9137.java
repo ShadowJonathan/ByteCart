@@ -1,5 +1,8 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
+
 /**
  * Match IP ranges and negate the result.
  * <p>
@@ -12,7 +15,7 @@ package nl.jboi.minecraft.bytecart.sign;
  */
 final class BC9137 extends AbstractBC9037 {
 
-    BC9137(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC9137(Block block, Vehicle vehicle) {
         super(block, vehicle);
     }
 

@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.address;
 
-import nl.jboi.minecraft.bytecart.address.AddressBook.Parameter;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.address.AddressBook.Parameter;
 import nl.jboi.minecraft.bytecart.file.BookFile;
 import nl.jboi.minecraft.bytecart.file.BookProperties;
 import org.bukkit.ChatColor;
@@ -92,7 +92,6 @@ final class Ticket {
                 }
             }
 
-
             ListIterator<? extends ItemStack> it = inv.iterator();
 
             while (it.hasNext()) {
@@ -108,11 +107,7 @@ final class Ticket {
 
         // no book found or user must provide one, return empty slot
         int slot = inv.firstEmpty();
-
-        if (slot != -1) {
-            return slot;
-        }
-        return -1;
+        return slot;
     }
 
     /**
@@ -170,7 +165,6 @@ final class Ticket {
             slot = existingticket;
         }
 
-
         try {
             BookFile bookfile = BookFile.create(inv, slot, false, "ticket");
             bookfile.setDescription(ByteCart.myPlugin.getConfig().getString("title"));
@@ -192,10 +186,8 @@ final class Ticket {
         if (stack != null && stack.getType().equals(Material.WRITABLE_BOOK)) {
 
             if (stack.hasItemMeta()) {
-
-                if ((book = (BookMeta) stack.getItemMeta()).hasPages()
-                        && (book.getPage(1).isEmpty()))
-                    return true;
+                return (book = (BookMeta) stack.getItemMeta()).hasPages()
+                        && (book.getPage(1).isEmpty());
             } else {
                 return true;
             }

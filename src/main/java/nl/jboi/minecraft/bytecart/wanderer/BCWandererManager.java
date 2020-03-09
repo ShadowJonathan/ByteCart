@@ -1,13 +1,13 @@
 package nl.jboi.minecraft.bytecart.wanderer;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.file.InventoryFile;
-import nl.jboi.minecraft.bytecart.util.LogUtil;
 import nl.jboi.minecraft.bytecart.api.wanderer.InventoryContent;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Level;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Scope;
 import nl.jboi.minecraft.bytecart.api.wanderer.WandererFactory;
 import nl.jboi.minecraft.bytecart.api.wanderer.WandererManager;
+import nl.jboi.minecraft.bytecart.file.InventoryFile;
+import nl.jboi.minecraft.bytecart.util.LogUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -26,8 +26,7 @@ public class BCWandererManager implements WandererManager {
 
     private static final Map<String, WandererFactory> map = new HashMap<String, WandererFactory>();
 
-    private static InventoryFile createWanderer(Inventory inv, int region, Level level, Player player
-            , String name, Level type) throws IOException {
+    private static InventoryFile createWanderer(Inventory inv, int region, Level level, Player player, String name, Level type) throws IOException {
         InventoryFile file = new InventoryFile(inv, true, name);
         String dot = ".";
         StringBuilder match = new StringBuilder();
@@ -37,17 +36,11 @@ public class BCWandererManager implements WandererManager {
         return file;
     }
 
-    /**
-     * Register a wanderer type
-     *
-     * @param wanderer the wanderer class implementing the wanderer
-     * @param type     the name that will reference this type of wanderer
-     */
     @Override
-    public boolean register(WandererFactory factory, String type) {
-        if (map.containsKey(type))
+    public boolean register(String key, WandererFactory factory) {
+        if (map.containsKey(key))
             return false;
-        map.put(type, factory);
+        map.put(key, factory);
         return true;
     }
 
@@ -117,10 +110,8 @@ public class BCWandererManager implements WandererManager {
                 match.append(suffix).append(dot);
 
             match.append(".*");
-            if (InventoryFile.isInventoryFile(inv, type)
-                    && booktitle.matches(match.toString())) {
-                return true;
-            }
+            return InventoryFile.isInventoryFile(inv, type)
+                    && booktitle.matches(match.toString());
         }
         return false;
     }

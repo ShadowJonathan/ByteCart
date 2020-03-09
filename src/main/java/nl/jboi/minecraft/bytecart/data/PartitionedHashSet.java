@@ -13,9 +13,6 @@ import java.util.Iterator;
  */
 public class PartitionedHashSet<E extends Partitionable> extends HashSet<E> {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 7798172721619367114L;
 
     public PartitionedHashSet() {

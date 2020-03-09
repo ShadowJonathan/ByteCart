@@ -1,16 +1,18 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.data.ExpirableMap;
 import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.InputFactory;
 import nl.jboi.minecraft.bytecart.io.InputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
-import nl.jboi.minecraft.bytecart.data.ExpirableMap;
 import nl.jboi.minecraft.bytecart.thread.Expirable;
-import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 
 /**
@@ -18,9 +20,9 @@ import org.bukkit.block.BlockFace;
  */
 final class BC7003 extends AbstractIC implements Triggable, Powerable {
 
-    private static final ExpirableMap<org.bukkit.Location, Integer> wavecount = new ExpirableMap<org.bukkit.Location, Integer>(400, false, "BC7003");
+    private static final ExpirableMap<Location, Integer> wavecount = new ExpirableMap<Location, Integer>(400, false, "BC7003");
 
-    BC7003(org.bukkit.block.Block block) {
+    BC7003(Block block) {
         super(block);
     }
 
@@ -32,7 +34,6 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
 
         // We treat the counter
         try {
-
 
             if (!this.decrementWaveCount()) {
 
@@ -78,7 +79,6 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
             (new RemoveCount(400, true, "Removecount")).reset(getLocation(), this.getOutput(0));
             wavecount.reset(getLocation(), this.getOutput(0));
         }
-
     }
 
     /**
@@ -98,8 +98,6 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
 //					ByteCart.log.info("ByteCart." + getName() + ": ++count = " + wavecount.getValue(getBlock()) + " after");
             }
         }
-
-
     }
 
     /**
@@ -157,7 +155,7 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
     }
 
     @Override
-    public boolean wasTrain(org.bukkit.Location loc) {
+    public boolean wasTrain(Location loc) {
         return false;
     }
 
@@ -169,7 +167,7 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
     /**
      * Runnable to remove the counter after a timeout
      */
-    private static final class RemoveCount extends Expirable<org.bukkit.Location> {
+    private static final class RemoveCount extends Expirable<Location> {
 
         public RemoveCount(long duration, boolean isSync, String name) {
             super(duration, isSync, name);
@@ -181,5 +179,4 @@ final class BC7003 extends AbstractIC implements Triggable, Powerable {
         }
     }
 }
-
 

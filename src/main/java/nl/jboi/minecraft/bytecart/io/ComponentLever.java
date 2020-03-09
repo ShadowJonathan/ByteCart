@@ -66,6 +66,4 @@ class ComponentLever extends AbstractComponent implements OutputPin, InputPin, R
     public int length() {
         return 4;
     }
-
-
 }

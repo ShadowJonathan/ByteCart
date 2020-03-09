@@ -13,9 +13,6 @@ import java.io.ObjectOutput;
  */
 class Delay implements Externalizable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 970735722356168776L;
 
     // hard coded value, if modified, change RouteProperty.writeObject() and readObject()

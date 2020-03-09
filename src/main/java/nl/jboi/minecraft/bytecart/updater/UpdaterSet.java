@@ -1,8 +1,8 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.data.ExpirableSet;
 import nl.jboi.minecraft.bytecart.api.event.UpdaterRemoveEvent;
+import nl.jboi.minecraft.bytecart.data.ExpirableSet;
 import org.bukkit.Bukkit;
 
 import java.util.Iterator;

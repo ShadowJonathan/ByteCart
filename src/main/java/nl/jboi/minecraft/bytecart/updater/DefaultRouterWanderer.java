@@ -1,6 +1,5 @@
 package nl.jboi.minecraft.bytecart.updater;
 
-
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide.Side;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import org.bukkit.block.BlockFace;
@@ -35,5 +34,4 @@ class DefaultRouterWanderer extends AbstractUpdater {
     public BlockFace giveRouterDirection() {
         return getRandomBlockFace(this.getRoutingTable(), this.getFrom().getBlockFace());
     }
-
 }

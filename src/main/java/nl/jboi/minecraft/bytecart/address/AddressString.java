@@ -5,7 +5,6 @@ import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.address.Resolver;
 import nl.jboi.minecraft.bytecart.api.hal.VirtualRegistry;
 
-
 /**
  * This class represents a canonical address like xx.xx.xx
  */
@@ -58,13 +57,8 @@ public class AddressString extends AbstractAddress implements Address {
      * @return true if the address is in the valid format or a resolvable name
      */
     public static boolean isResolvableAddressOrName(String s) {
-        if ((s.matches("([0-9]{1,4}\\.){2,2}[0-9]{1,3}"))
-                || isResolvableName(s)) {
-            return true;
-        }
-
-        return false;
-
+        return (s.matches("([0-9]{1,4}\\.){2}[0-9]{1,3}"))
+                || isResolvableName(s);
     }
 
     /**
@@ -76,12 +70,7 @@ public class AddressString extends AbstractAddress implements Address {
      * @return true if the address is in the valid format
      */
     private static boolean isAddress(String s) {
-        if (!(s.matches("([0-9]{1,4}\\.){2,2}[0-9]{1,3}"))) {
-            return false;
-        }
-
-        return true;
-
+        return s.matches("([0-9]{1,4}\\.){2}[0-9]{1,3}");
     }
 
     /**
@@ -93,8 +82,7 @@ public class AddressString extends AbstractAddress implements Address {
     private static boolean isResolvableName(String name) {
         if (resolver != null) {
             String a = resolver.resolve(name);
-            if (a != null && AddressString.isAddress(a))
-                return true;
+            return a != null && AddressString.isAddress(a);
         }
         return false;
     }

@@ -25,5 +25,4 @@ public interface WandererFactory {
     void updateTimestamp(InventoryContent routes);
 
     void destroyWanderer(Inventory inv);
-
 }

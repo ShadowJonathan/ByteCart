@@ -11,5 +11,4 @@ public interface Counter {
     void setCount(int slot, int amount);
 
     void incrementCount(int i, int j);
-
 }

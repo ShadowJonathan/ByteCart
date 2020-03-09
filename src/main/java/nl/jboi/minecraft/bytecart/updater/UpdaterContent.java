@@ -1,11 +1,11 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
+import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
 import nl.jboi.minecraft.bytecart.routing.Metric;
 import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
 import nl.jboi.minecraft.bytecart.wanderer.WandererContent;
-import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
-import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -20,9 +20,6 @@ import java.util.Set;
  */
 public class UpdaterContent extends WandererContent implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 848098890652934583L;
 
     private boolean fullreset, isnew;
@@ -65,7 +62,6 @@ public class UpdaterContent extends WandererContent implements Serializable {
                     ByteCart.log.info(String.format("ByteCart : Route exchange : give ring %d with metric %d to %s",
                             i, table.getMinMetric(i), table.getDirection(i)));
             }
-
         }
     }
 

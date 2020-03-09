@@ -3,7 +3,6 @@ package nl.jboi.minecraft.bytecart.file;
 import nl.jboi.minecraft.bytecart.util.Base64;
 import org.bukkit.inventory.meta.BookMeta;
 
-
 /**
  * Base64 encoder/decoder for BookOutPutStream
  */

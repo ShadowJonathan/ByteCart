@@ -4,7 +4,6 @@ import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.AnaloguePowerable;
 
-
 /**
  * A Redstone wire
  */
@@ -22,15 +21,11 @@ class ComponentWire extends AbstractComponent implements InputPin, RegistryInput
 
     @Override
     public boolean read() {
-        if (((AnaloguePowerable) this.getBlock().getBlockData()).getPower() != 0) {
-//			if(ByteCart.debug)
-//				ByteCart.log.info("Redstone wire on at (" + this.getBlock().getLocation().toString() + ")");
-            return true;
-        }
+        //			if(ByteCart.debug)
+        //				ByteCart.log.info("Redstone wire on at (" + this.getBlock().getLocation().toString() + ")");
+        return ((AnaloguePowerable) this.getBlock().getBlockData()).getPower() != 0;
 //		if(ByteCart.debug)
 //			ByteCart.log.info("Redstone wire off at (" + this.getBlock().getLocation().toString() + ")");
-
-        return false;
     }
 
     @Override
@@ -48,6 +43,4 @@ class ComponentWire extends AbstractComponent implements InputPin, RegistryInput
     public int length() {
         return 4;
     }
-
-
 }

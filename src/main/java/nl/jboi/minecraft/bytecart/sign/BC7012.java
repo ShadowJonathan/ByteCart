@@ -2,14 +2,16 @@ package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * A region field setter using redstone
  */
 final class BC7012 extends BC7013 implements Triggable {
 
-    BC7012(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7012(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -34,5 +36,4 @@ final class BC7012 extends BC7013 implements Triggable {
     protected boolean forceTicketReuse() {
         return true;
     }
-
 }

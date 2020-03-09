@@ -1,12 +1,13 @@
 package nl.jboi.minecraft.bytecart.sign;
 
-import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryBoth;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
-
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * Match IP ranges.
@@ -28,7 +29,7 @@ import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
  */
 abstract class AbstractBC9037 extends AbstractSimpleCrossroad implements Triggable {
 
-    AbstractBC9037(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    AbstractBC9037(Block block, Vehicle vehicle) {
         super(block, vehicle);
     }
 

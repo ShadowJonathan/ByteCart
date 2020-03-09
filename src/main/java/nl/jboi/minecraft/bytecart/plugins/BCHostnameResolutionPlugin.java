@@ -42,7 +42,6 @@ public final class BCHostnameResolutionPlugin implements Resolver, Listener, Com
     private Connection con;
     private Statement s;
 
-
     public void onLoad() {
         if (sql.equalsIgnoreCase("mysql")) {
             FileConfiguration config = ByteCart.myPlugin.getConfig();
@@ -91,7 +90,7 @@ public final class BCHostnameResolutionPlugin implements Resolver, Listener, Com
                                     String uu = "Console", user = "Console";
                                     if ((a instanceof Player)) {
                                         uu = ((Player) a).getUniqueId().toString();
-                                        user = ((Player) a).getName();
+                                        user = a.getName();
                                     }
                                     createEntry(hostname, safeIP(d[d.length - 1]), uu, user);
                                     a.sendMessage(ChatColor.DARK_GREEN + "[Bytecart] " + ChatColor.YELLOW + "Hostname added");
@@ -395,7 +394,6 @@ public final class BCHostnameResolutionPlugin implements Resolver, Listener, Com
         return false;
     }
 
-
     private boolean existEntryByName(String name, CommandSender a) throws SQLException {
         if (existEntryByName(name)) {
             ResultSet res = getEntryByName(name);
@@ -459,9 +457,7 @@ public final class BCHostnameResolutionPlugin implements Resolver, Listener, Com
             return false;
         Pattern p = Pattern.compile("[^a-z0-9/*+$!:.@_\\-#&\\s]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(input);
-        if (m.find())
-            return false;
-        return true;
+        return !m.find();
     }
 
     private String getName(String[] input, int s, int e) {

@@ -6,7 +6,6 @@ import org.bukkit.inventory.meta.BookMeta;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-
 /**
  * An output stream to write in book
  */
@@ -36,7 +35,7 @@ class BookOutputStream extends ByteArrayOutputStream {
 
     @Override
     public void write(byte[] bytes) throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book has been already closed");
         this.write(bytes, 0, bytes.length);
     }
@@ -53,7 +52,7 @@ class BookOutputStream extends ByteArrayOutputStream {
     @Override
     public void flush() throws IOException {
 
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book has been already closed");
 
         if (this.size() == 0)
@@ -103,7 +102,7 @@ class BookOutputStream extends ByteArrayOutputStream {
 
     @Override
     public void close() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Book has been already closed");
         isClosed = true;
     }

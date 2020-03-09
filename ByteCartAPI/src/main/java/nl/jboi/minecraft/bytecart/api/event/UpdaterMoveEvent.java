@@ -33,5 +33,4 @@ public final class UpdaterMoveEvent extends Event {
     public HandlerList getHandlers() {
         return handlers;
     }
-
 }

@@ -79,5 +79,4 @@ final class InventoryInputStream extends ByteArrayInputStream {
         sb.trimToSize();
         return sb.toString();
     }
-
 }

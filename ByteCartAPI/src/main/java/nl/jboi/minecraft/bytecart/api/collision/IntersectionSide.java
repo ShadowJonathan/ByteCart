@@ -26,5 +26,4 @@ public interface IntersectionSide {
             return LEVER_OFF;
         }
     }
-
 }

@@ -1,10 +1,10 @@
 package nl.jboi.minecraft.bytecart.routing;
 
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.file.InventoryFile;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.file.InventoryFile;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.Inventory;
 
@@ -77,7 +77,7 @@ final class RoutingTableBookJSON extends AbstractRoutingTable implements Routing
 
     @Override
     public final Iterator<Integer> getOrderedRouteNumbers() {
-        Iterator<Integer> it = ((SortedSet<Integer>) table.keySet()).iterator();
+        Iterator<Integer> it = table.keySet().iterator();
         return it;
     }
 
@@ -165,7 +165,6 @@ final class RoutingTableBookJSON extends AbstractRoutingTable implements Routing
                         return direction;
                     }
                 }
-
             }
         }
         return null;

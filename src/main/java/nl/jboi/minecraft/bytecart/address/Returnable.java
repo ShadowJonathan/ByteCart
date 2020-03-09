@@ -1,6 +1,5 @@
 package nl.jboi.minecraft.bytecart.address;
 
-
 /**
  * Represent a return address
  */

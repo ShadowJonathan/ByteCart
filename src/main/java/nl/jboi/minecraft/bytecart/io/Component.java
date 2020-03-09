@@ -11,6 +11,5 @@ interface Component {
      *
      * @return the block
      */
-	Block getBlock();
-
+    Block getBlock();
 }

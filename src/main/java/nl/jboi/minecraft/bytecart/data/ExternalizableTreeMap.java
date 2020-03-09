@@ -45,7 +45,6 @@ public final class ExternalizableTreeMap<K extends Externalizable, V extends Ext
             V value = (V) s.readObject();
             this.put(key, value);
         }
-
     }
 
     @Override

@@ -80,5 +80,4 @@ public final class InventoryFile implements BCFile {
     public String getPages() {
         return InventoryInputStream.readPages(inventory, name, binarymode);
     }
-
 }

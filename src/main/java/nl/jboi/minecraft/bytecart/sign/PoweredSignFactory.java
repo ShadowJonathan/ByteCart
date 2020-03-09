@@ -1,12 +1,11 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.data.ExpirableSet;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-
 
 /**
  * This class contains the method to instantiate any IC
@@ -46,8 +45,6 @@ public class PoweredSignFactory {
                             ((Sign) block.getState()).getLine(2)));
                 case 9001:
                     return (new BC9001(block, null));
-
-
             }
         } catch (Exception e) {
             if (ByteCart.debug)
@@ -61,7 +58,6 @@ public class PoweredSignFactory {
 			ByteCart.log.info("ByteCart: #IC " + ICnumber + " not activated");
 */
         return null;
-
     }
 
     /**
@@ -71,7 +67,6 @@ public class PoweredSignFactory {
      * @return a Powerable IC, or null
      */
     public Powerable getIC(Block block) {
-
 
         if (AbstractIC.checkEligibility(block) && !this.poweredsignsset.contains(block.getLocation(loc))) {
 
@@ -88,7 +83,5 @@ public class PoweredSignFactory {
         // no BC sign post
 
         return null;
-
     }
-
 }

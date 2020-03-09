@@ -2,13 +2,14 @@ package nl.jboi.minecraft.bytecart.collision;
 
 import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
 /**
  * A router where the cart turns right
  */
 final class RightRouter extends AbstractRouter implements Router {
-    RightRouter(BlockFace from, org.bukkit.Location loc, boolean b) {
+    RightRouter(BlockFace from, Location loc, boolean b) {
         super(from, loc, b);
 
         FromTo.put(Side.BACK, Side.RIGHT);

@@ -61,6 +61,4 @@ public abstract class Expirable<K> {
     public final String getName() {
         return name;
     }
-
-
 }

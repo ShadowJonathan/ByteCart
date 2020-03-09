@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.routing;
 
-import nl.jboi.minecraft.bytecart.data.PartitionedHashSet;
 import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
+import nl.jboi.minecraft.bytecart.data.PartitionedHashSet;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -16,9 +16,6 @@ import java.util.TreeMap;
  */
 final class RouteProperty implements Externalizable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -3548458365177323172L;
 
     private TreeMap<Metric, PartitionedHashSet<DirectionRegistry>> map = new TreeMap<Metric, PartitionedHashSet<DirectionRegistry>>();
@@ -75,5 +72,4 @@ final class RouteProperty implements Externalizable {
             arg0.writeShort((entry.getKey().value() << 4) + entry.getValue().getPartitionedValue());
         }
     }
-
 }

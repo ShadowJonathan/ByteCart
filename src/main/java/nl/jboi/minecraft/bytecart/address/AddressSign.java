@@ -1,11 +1,10 @@
 package nl.jboi.minecraft.bytecart.address;
 
-import nl.jboi.minecraft.bytecart.io.AbstractComponent;
-import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryBoth;
+import nl.jboi.minecraft.bytecart.io.AbstractComponent;
+import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import org.bukkit.block.Block;
-
 
 /**
  * Implements an address using a line of a sign as support

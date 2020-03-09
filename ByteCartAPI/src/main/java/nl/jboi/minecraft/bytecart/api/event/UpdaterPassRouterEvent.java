@@ -67,6 +67,4 @@ public class UpdaterPassRouterEvent extends UpdaterEvent {
     public Block getCenter() {
         return getUpdater().getCenter();
     }
-
-
 }

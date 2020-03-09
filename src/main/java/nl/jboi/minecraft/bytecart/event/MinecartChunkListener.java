@@ -15,7 +15,7 @@ public final class MinecartChunkListener implements Listener {
     public void onVehicleMove(VehicleMoveEvent event) {
         if (event.getVehicle() instanceof Minecart) { // we care only about minecarts
             if (event.getTo().getChunk() != event.getFrom().getChunk())
-            MinecartChunkManager.register(event.getTo().getChunk());
+                MinecartChunkManager.register(event.getTo().getChunk());
             MinecartChunkManager.checkAndUnregister(event.getFrom().getChunk());
         }
     }

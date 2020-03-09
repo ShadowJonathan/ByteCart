@@ -1,7 +1,7 @@
-/**
- *
- */
 package nl.jboi.minecraft.bytecart.sign;
+
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * An eject sign
@@ -12,8 +12,8 @@ final class BC7005 extends AbstractTriggeredSign implements Triggable {
      * @param block
      * @param vehicle
      */
-    public BC7005(org.bukkit.block.Block block,
-                  org.bukkit.entity.Vehicle vehicle) {
+    public BC7005(Block block,
+                  Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -32,5 +32,4 @@ final class BC7005 extends AbstractTriggeredSign implements Triggable {
     public String getFriendlyName() {
         return "Eject";
     }
-
 }

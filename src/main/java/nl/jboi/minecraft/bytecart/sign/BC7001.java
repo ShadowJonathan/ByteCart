@@ -1,13 +1,14 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.InputFactory;
 import nl.jboi.minecraft.bytecart.io.InputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Rail;
@@ -29,7 +30,7 @@ final class BC7001 extends AbstractTriggeredSign implements Triggable, Powerable
     /**
      * Constructor : !! vehicle can be null !!
      */
-    BC7001(org.bukkit.block.Block block, Vehicle vehicle) {
+    BC7001(Block block, Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -86,8 +87,7 @@ final class BC7001 extends AbstractTriggeredSign implements Triggable, Powerable
                         }
                         , 5);
 
-
-                // if the cart is stopped, start it
+// if the cart is stopped, start it
                 if (this.getVehicle().getVelocity().equals(new Vector(0, 0, 0))) {
                     if (((Minecart) this.getVehicle()).getMaxSpeed() == 0)
                         ((Minecart) this.getVehicle()).setMaxSpeed(0.4d);
@@ -122,7 +122,6 @@ final class BC7001 extends AbstractTriggeredSign implements Triggable, Powerable
             // the lever is on
             this.getOutput(0).setAmount(1);
         }
-
     }
 
     @Override
@@ -130,7 +129,7 @@ final class BC7001 extends AbstractTriggeredSign implements Triggable, Powerable
         // power update
 
         // We need to find if a cart is stopped and set the member variable Vehicle
-        org.bukkit.block.Block block = this.getBlock().getRelative(BlockFace.UP, 2);
+        Block block = this.getBlock().getRelative(BlockFace.UP, 2);
         Location loc = block.getLocation();
         BlockData rail;
 

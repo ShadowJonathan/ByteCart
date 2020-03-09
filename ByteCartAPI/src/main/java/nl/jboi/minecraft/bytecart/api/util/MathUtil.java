@@ -33,7 +33,6 @@ public final class MathUtil {
                 break;
         }
         return b;
-
     }
 
     public static BlockFace anticlockwise(BlockFace f) {
@@ -51,7 +50,6 @@ public final class MathUtil {
                 break;
         }
         return b;
-
     }
 
     public static BlockFace straightUp(BlockFace b) {
@@ -100,7 +98,6 @@ public final class MathUtil {
             }
             ++i;
         }
-
     }
 
     /**
@@ -111,7 +108,7 @@ public final class MathUtil {
      * @throws ClassNotFoundException
      * @throws IOException
      */
-    public static org.bukkit.entity.Vehicle getVehicleByLocation(Location loc) {
+    public static Vehicle getVehicleByLocation(Location loc) {
         List<Entity> ent = Arrays.asList(loc.getBlock().getChunk().getEntities());
         for (ListIterator<Entity> it = ent.listIterator(); it.hasNext(); ) {
             if (it.next() instanceof Minecart) {

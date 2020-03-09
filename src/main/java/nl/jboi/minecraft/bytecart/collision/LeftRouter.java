@@ -1,6 +1,7 @@
 package nl.jboi.minecraft.bytecart.collision;
 
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
 import java.util.EnumSet;
@@ -10,7 +11,7 @@ import java.util.Set;
  * A router where a cart turns left
  */
 final class LeftRouter extends AbstractRouter implements Router {
-    LeftRouter(BlockFace from, org.bukkit.Location loc, boolean b) {
+    LeftRouter(BlockFace from, Location loc, boolean b) {
         super(from, loc, b);
         FromTo.put(Side.BACK, Side.LEFT);
 

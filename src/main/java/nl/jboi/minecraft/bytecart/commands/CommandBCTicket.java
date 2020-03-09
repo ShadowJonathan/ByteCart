@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.commands;
 
-import nl.jboi.minecraft.bytecart.sign.BC7010;
 import nl.jboi.minecraft.bytecart.api.ByteCartPlugin;
+import nl.jboi.minecraft.bytecart.sign.BC7010;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

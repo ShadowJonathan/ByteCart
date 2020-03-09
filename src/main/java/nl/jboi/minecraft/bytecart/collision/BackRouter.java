@@ -1,5 +1,6 @@
 package nl.jboi.minecraft.bytecart.collision;
 
+import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
 import java.util.EnumSet;
@@ -9,7 +10,7 @@ import java.util.Set;
  * A router where the cart goes back
  */
 final class BackRouter extends AbstractRouter implements Router {
-    BackRouter(BlockFace from, org.bukkit.Location loc, boolean b) {
+    BackRouter(BlockFace from, Location loc, boolean b) {
         super(from, loc, b);
         FromTo.put(Side.BACK, Side.BACK);
 
@@ -34,5 +35,4 @@ final class BackRouter extends AbstractRouter implements Router {
     public final BlockFace getTo() {
         return this.getFrom();
     }
-
 }

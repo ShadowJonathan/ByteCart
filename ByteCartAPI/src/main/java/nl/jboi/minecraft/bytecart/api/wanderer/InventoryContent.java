@@ -58,5 +58,4 @@ public interface InventoryContent extends Serializable {
     long getExpirationTime();
 
     void setExpirationTime(long lastupdate);
-
 }

@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.plugins;
 
-import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.event.*;
 import nl.jboi.minecraft.bytecart.api.hal.IC;
@@ -73,7 +73,6 @@ public final class BCDynmapPlugin implements Listener {
             markerset.addAllowedMarkerIcon(updatericon);
             markerset.setDefaultMarkerIcon(defaulticon);
         }
-
     }
 
     /**

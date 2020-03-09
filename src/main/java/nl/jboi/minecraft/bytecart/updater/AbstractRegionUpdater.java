@@ -1,11 +1,11 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.routing.BCCounter;
-import nl.jboi.minecraft.bytecart.sign.BC8010;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Level;
+import nl.jboi.minecraft.bytecart.routing.BCCounter;
+import nl.jboi.minecraft.bytecart.sign.BC8010;
 import org.bukkit.block.BlockFace;
 
 import java.io.IOException;
@@ -63,19 +63,16 @@ abstract class AbstractRegionUpdater extends DefaultRouterWanderer {
 
                 getRoutingTable().setEntry(current, getFrom().getBlockFace(), 0);
                 ByteCart.myPlugin.getWandererManager().getFactory("Updater").updateTimestamp(Routes);
-
             }
 
             // loading received routes in router if coming from another router
             if (this.getRoutes().getLastrouterid() != this.getCenter().hashCode())
                 getRoutingTable().Update(getRoutes(), getFrom().getBlockFace());
 
-
-            // preparing the routes to send
+// preparing the routes to send
             Routes.putRoutes(getRoutingTable(), new DirectionRegistry(To));
 
-
-            // storing the route in the map
+// storing the route in the map
             //			ByteCart.myPlugin.getUm().getMapRoutes().put(getVehicle().getEntityId(), getRoutes(), false);
 
             setCurrent(current);

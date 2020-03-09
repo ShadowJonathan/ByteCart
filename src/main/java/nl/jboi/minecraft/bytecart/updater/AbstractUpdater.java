@@ -1,9 +1,9 @@
 package nl.jboi.minecraft.bytecart.updater;
 
-import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
-import nl.jboi.minecraft.bytecart.sign.BC8010;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.wanderer.AbstractWanderer;
+import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
+import nl.jboi.minecraft.bytecart.sign.BC8010;
 import org.bukkit.block.BlockFace;
 
 abstract class AbstractUpdater extends AbstractWanderer {
@@ -19,7 +19,6 @@ abstract class AbstractUpdater extends AbstractWanderer {
         } else {
             RoutingTable = null;
         }
-
     }
 
     /**

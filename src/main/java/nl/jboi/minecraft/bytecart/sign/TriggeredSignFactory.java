@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.sign;
 
-import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -10,7 +10,6 @@ import org.bukkit.block.data.Rail;
 import org.bukkit.entity.Vehicle;
 
 import java.io.IOException;
-
 
 /**
  * This class contains the method to instantiate any IC

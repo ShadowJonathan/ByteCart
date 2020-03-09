@@ -1,16 +1,16 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.address.TicketFactory;
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.inventory.InventoryHolder;
-
 
 /**
  * A ticket spawner for players
@@ -23,8 +23,8 @@ public class BC7010 extends AbstractTriggeredSign implements Triggable, Clickabl
     /**
      * Constructor : !! vehicle can be null !!
      */
-    BC7010(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7010(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -175,7 +175,6 @@ public class BC7010 extends AbstractTriggeredSign implements Triggable, Clickabl
     @Override
     public final void click() {
         this.trigger();
-
     }
 
     @Override

@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.collision;
 
-import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.data.ExpirableMap;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.Location;
 
 /**
@@ -12,7 +12,7 @@ abstract class AbstractCollisionAvoider extends AbstractIC {
     /**
      * @param loc the location where the collision avoider will be attached
      */
-    AbstractCollisionAvoider(org.bukkit.Location loc) {
+    AbstractCollisionAvoider(Location loc) {
         super(loc.getBlock());
     }
 
@@ -99,5 +99,4 @@ abstract class AbstractCollisionAvoider extends AbstractIC {
             return Value;
         }
     }
-
 }

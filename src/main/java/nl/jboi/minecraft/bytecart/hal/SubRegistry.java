@@ -55,5 +55,4 @@ public class SubRegistry<T extends Registry> implements RegistryBoth {
     public boolean getBit(int index) {
         return ((RegistryInput) this.Registry).getBit(index + this.First);
     }
-
 }

@@ -1,10 +1,10 @@
 package nl.jboi.minecraft.bytecart.routing;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.file.InventoryFile;
+import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
 import nl.jboi.minecraft.bytecart.data.ExternalizableTreeMap;
 import nl.jboi.minecraft.bytecart.data.PartitionedHashSet;
-import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
+import nl.jboi.minecraft.bytecart.file.InventoryFile;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.Inventory;
 

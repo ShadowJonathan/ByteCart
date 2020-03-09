@@ -1,14 +1,13 @@
 package nl.jboi.minecraft.bytecart.routing;
 
-import nl.jboi.minecraft.bytecart.file.InventoryFile;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import nl.jboi.minecraft.bytecart.file.InventoryFile;
 import org.bukkit.inventory.Inventory;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-
 
 /**
  * Factory for routing tables
@@ -52,5 +51,4 @@ public final class RoutingTableFactory {
         rtj.setInventory(inv, slot);
         return rtj;
     }
-
 }

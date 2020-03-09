@@ -1,11 +1,11 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.util.LogUtil;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.event.UpdaterSetRingEvent;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.util.LogUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.block.BlockFace;
 
@@ -49,7 +49,6 @@ class UpdaterRegion extends AbstractRegionUpdater implements Wanderer {
         }
         return current;
     }
-
 
     private int getOrSetCurrent(int current) {
         // check if the sign has not priority
@@ -177,7 +176,6 @@ class UpdaterRegion extends AbstractRegionUpdater implements Wanderer {
 
         routeUpdates(To);
     }
-
 
     @Override
     public final int getTrackNumber() {

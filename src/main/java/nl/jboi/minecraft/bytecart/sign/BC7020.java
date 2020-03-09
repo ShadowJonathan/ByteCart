@@ -1,18 +1,20 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * Power the lever on the train including wagons
  */
 class BC7020 extends AbstractTriggeredSign implements Triggable {
 
-    BC7020(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7020(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -32,7 +34,6 @@ class BC7020 extends AbstractTriggeredSign implements Triggable {
             this.getOutput(0).setAmount(3);    // activate levers
         } else
             this.getOutput(0).setAmount(0);    // deactivate levers
-
     }
 
     /**
@@ -67,5 +68,4 @@ class BC7020 extends AbstractTriggeredSign implements Triggable {
     public String getFriendlyName() {
         return "Is a Train ?";
     }
-
 }

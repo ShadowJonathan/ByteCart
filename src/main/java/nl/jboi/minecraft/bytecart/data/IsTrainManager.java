@@ -19,6 +19,4 @@ public final class IsTrainManager {
     public ExpirableMap<Location, Boolean> getMap() {
         return IsTrain;
     }
-
-
 }

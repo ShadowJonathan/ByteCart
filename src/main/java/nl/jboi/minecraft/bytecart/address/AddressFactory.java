@@ -1,12 +1,12 @@
 package nl.jboi.minecraft.bytecart.address;
 
-import nl.jboi.minecraft.bytecart.address.AddressBook.Parameter;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.address.AddressBook.Parameter;
+import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.file.BookFile;
+import nl.jboi.minecraft.bytecart.file.BookProperties;
 import nl.jboi.minecraft.bytecart.sign.BC7010;
 import nl.jboi.minecraft.bytecart.sign.BC7011;
-import nl.jboi.minecraft.bytecart.api.address.Address;
-import nl.jboi.minecraft.bytecart.file.BookProperties;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;

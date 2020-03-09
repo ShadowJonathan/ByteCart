@@ -70,5 +70,4 @@ public class SignPostSubnetEvent extends BCRoutableSignEvent {
     public int getNetmask() {
         return subnet.getNetmask();
     }
-
 }

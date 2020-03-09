@@ -1,12 +1,13 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.sign.Subnet;
 import nl.jboi.minecraft.bytecart.collision.SimpleCollisionAvoider;
 import nl.jboi.minecraft.bytecart.updater.UpdaterLocal;
-import nl.jboi.minecraft.bytecart.api.sign.Subnet;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 import java.io.IOException;
-
 
 /**
  * A simple intersection block with anticollision
@@ -15,8 +16,8 @@ final class BC9000 extends AbstractSimpleCrossroad implements Subnet, Triggable 
 
     private final int netmask;
 
-    BC9000(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC9000(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
         this.netmask = 0;
     }
@@ -34,7 +35,6 @@ final class BC9000 extends AbstractSimpleCrossroad implements Subnet, Triggable 
                 // here we perform routes update
                 updater.leaveSubnet();
                 updater.save();
-
             } catch (ClassNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

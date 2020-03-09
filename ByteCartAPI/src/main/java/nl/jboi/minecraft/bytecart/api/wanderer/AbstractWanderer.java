@@ -57,7 +57,6 @@ public abstract class AbstractWanderer {
         while (direction.getBlockFace() == from || routingTable.isDirectlyConnected(0, direction.getBlockFace())) {
             direction.setAmount(1 << (new Random()).nextInt(4));
         }
-
         return direction.getBlockFace();
     }
 

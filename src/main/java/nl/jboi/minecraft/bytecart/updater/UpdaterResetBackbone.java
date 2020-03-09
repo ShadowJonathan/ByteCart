@@ -11,7 +11,6 @@ class UpdaterResetBackbone extends UpdaterBackBone implements Wanderer {
         super(bc, rte);
     }
 
-
     @Override
     public void doAction(BlockFace to) {
         if (!this.isAtBorder())
@@ -25,6 +24,4 @@ class UpdaterResetBackbone extends UpdaterBackBone implements Wanderer {
             return face;
         return AbstractWanderer.getRandomBlockFace(getRoutingTable(), getFrom().getBlockFace());
     }
-
-
 }

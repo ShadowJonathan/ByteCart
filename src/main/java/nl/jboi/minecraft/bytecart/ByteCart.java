@@ -1,8 +1,8 @@
 package nl.jboi.minecraft.bytecart;
 
-import nl.jboi.minecraft.bytecart.api.address.Resolver;
 import nl.jboi.minecraft.bytecart.api.ByteCartAPI;
 import nl.jboi.minecraft.bytecart.api.ByteCartPlugin;
+import nl.jboi.minecraft.bytecart.api.address.Resolver;
 import nl.jboi.minecraft.bytecart.collision.CollisionAvoiderManager;
 import nl.jboi.minecraft.bytecart.commands.*;
 import nl.jboi.minecraft.bytecart.data.IsTrainManager;
@@ -107,7 +107,6 @@ public final class ByteCart extends JavaPlugin implements ByteCartPlugin {
         myPlugin = null;
         ByteCartAPI.setPlugin(null);
         log = null;
-
     }
 
     /**

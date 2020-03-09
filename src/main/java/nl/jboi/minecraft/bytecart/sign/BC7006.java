@@ -1,10 +1,9 @@
-/**
- *
- */
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Minecart;
+import org.bukkit.entity.Vehicle;
 
 /**
  * A booster
@@ -15,14 +14,14 @@ final class BC7006 extends AbstractTriggeredSign implements Triggable {
      * @param block
      * @param vehicle
      */
-    public BC7006(org.bukkit.block.Block block,
-                  org.bukkit.entity.Vehicle vehicle) {
+    public BC7006(Block block,
+                  Vehicle vehicle) {
         super(block, vehicle);
     }
 
     @Override
     public void trigger() {
-        org.bukkit.entity.Vehicle vehicle = this.getVehicle();
+        Vehicle vehicle = this.getVehicle();
         Minecart cart = (Minecart) vehicle;
         if (cart.getMaxSpeed() <= 0.4D)
             cart.setMaxSpeed(0.68D);

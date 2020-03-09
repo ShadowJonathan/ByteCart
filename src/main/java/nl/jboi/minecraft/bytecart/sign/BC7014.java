@@ -1,21 +1,23 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.io.InputFactory;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.io.InputFactory;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Vehicle;
 
 /**
  * A station field setter using a redstone signal strength
  */
 class BC7014 extends BC7010 implements Triggable {
 
-    BC7014(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7014(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
         this.StorageCartAllowed = true;
     }
@@ -57,7 +59,7 @@ class BC7014 extends BC7010 implements Triggable {
      */
     protected void addIO() {
         // Input[0] : wire on left
-        org.bukkit.block.Block block = this.getBlock().getRelative(BlockFace.UP).getRelative(MathUtil.anticlockwise(getCardinal()));
+        Block block = this.getBlock().getRelative(BlockFace.UP).getRelative(MathUtil.anticlockwise(getCardinal()));
         RegistryInput wire = InputFactory.getInput(block);
         this.addInputRegistry(wire);
     }

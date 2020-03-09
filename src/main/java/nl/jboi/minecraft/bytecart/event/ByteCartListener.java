@@ -1,9 +1,9 @@
 package nl.jboi.minecraft.bytecart.event;
 
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.api.event.SignCreateEvent;
 import nl.jboi.minecraft.bytecart.api.event.SignRemoveEvent;
 import nl.jboi.minecraft.bytecart.api.hal.IC;
-import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.sign.*;
 import org.bukkit.Bukkit;
@@ -30,14 +30,12 @@ import org.bukkit.event.vehicle.VehicleMoveEvent;
 
 import java.util.Iterator;
 
-
 /**
  * The main listener
  */
 public class ByteCartListener implements Listener {
 
     private PoweredSignFactory MyPoweredICFactory;
-
 
     public ByteCartListener() {
         this.MyPoweredICFactory = new PoweredSignFactory();
@@ -81,8 +79,7 @@ public class ByteCartListener implements Listener {
         int to_x = loc.getBlockX();
         int to_z = loc.getBlockZ();
 
-
-        // Check if the vehicle crosses a cube boundary
+// Check if the vehicle crosses a cube boundary
         if (from_x == to_x && from_z == to_z)
             return;    // no boundary crossed, resumed
 
@@ -218,8 +215,7 @@ public class ByteCartListener implements Listener {
 
 			Powerable myIC = this.MyPoweredICFactory.getIC(b);
 
-
-			if (myIC != null) {
+if (myIC != null) {
 				try {
 					if(ByteCart.debug)
 						ByteCart.log.info("ByteCart: power()");
@@ -235,8 +231,7 @@ public class ByteCartListener implements Listener {
 			}
 			return;
 		}
-
-	}
+}
 */
 
     /**
@@ -256,7 +251,6 @@ public class ByteCartListener implements Listener {
         if (myIC != null) {
             myIC.power();
         }
-
     }
 
     /**

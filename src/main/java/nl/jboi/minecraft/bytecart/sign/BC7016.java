@@ -1,19 +1,21 @@
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.address.ReturnAddressFactory;
+import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
-import nl.jboi.minecraft.bytecart.api.address.Address;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 /**
  * A return address checker
  */
 final class BC7016 extends AbstractTriggeredSign implements Triggable {
 
-    BC7016(org.bukkit.block.Block block,
-           org.bukkit.entity.Vehicle vehicle) {
+    BC7016(Block block,
+           Vehicle vehicle) {
         super(block, vehicle);
     }
 
@@ -54,5 +56,4 @@ final class BC7016 extends AbstractTriggeredSign implements Triggable {
 
         this.addOutputRegistry(command1);
     }
-
 }

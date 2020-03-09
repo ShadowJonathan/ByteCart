@@ -50,7 +50,6 @@ class ComponentButton extends AbstractComponent implements OutputPin, InputPin {
 
                     // We update the HashMap
                     ActivatedButtonMap.put(block.getLocation(), id);
-
                 } else {
                     // if button is off, we power the button
                     button.setPowered(true);
@@ -66,7 +65,6 @@ class ComponentButton extends AbstractComponent implements OutputPin, InputPin {
                     ActivatedButtonMap.put(block.getLocation(), id);
                 }
             }
-
         }
     }
 
@@ -78,6 +76,4 @@ class ComponentButton extends AbstractComponent implements OutputPin, InputPin {
         }
         return false;
     }
-
-
 }

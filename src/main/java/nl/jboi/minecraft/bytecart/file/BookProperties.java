@@ -103,19 +103,18 @@ public final class BookProperties implements Closeable, Flushable {
         if (ByteCart.debug)
             ByteCart.log.info("ByteCart: property string : " + Properties.getProperty(key, "" + defaultvalue));
         return Integer.parseInt(Properties.getProperty(key, "" + defaultvalue));
-
     }
 
     @Override
     public void flush() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Property file has been already closed");
         save();
     }
 
     @Override
     public void close() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("Property file has been already closed");
         isClosed = true;
     }
@@ -145,6 +144,4 @@ public final class BookProperties implements Closeable, Flushable {
             this.name = name;
         }
     }
-
-
 }

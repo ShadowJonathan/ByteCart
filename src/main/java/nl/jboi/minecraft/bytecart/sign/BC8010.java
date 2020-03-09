@@ -1,14 +1,10 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import com.google.gson.JsonSyntaxException;
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.address.ReturnAddressFactory;
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.collision.CollisionAvoiderBuilder;
-import nl.jboi.minecraft.bytecart.collision.Router;
-import nl.jboi.minecraft.bytecart.collision.RouterCollisionAvoiderBuilder;
-import nl.jboi.minecraft.bytecart.routing.RoutingTableFactory;
-import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.event.SignPostRouteEvent;
 import nl.jboi.minecraft.bytecart.api.event.SignPreRouteEvent;
@@ -17,16 +13,20 @@ import nl.jboi.minecraft.bytecart.api.sign.BCRouter;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.api.wanderer.AbstractWanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
-import com.google.gson.JsonSyntaxException;
+import nl.jboi.minecraft.bytecart.collision.CollisionAvoiderBuilder;
+import nl.jboi.minecraft.bytecart.collision.Router;
+import nl.jboi.minecraft.bytecart.collision.RouterCollisionAvoiderBuilder;
+import nl.jboi.minecraft.bytecart.routing.RoutingTableFactory;
+import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import java.io.IOException;
-
 
 /**
  * An IC at the entry of a L1 router
@@ -41,7 +41,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
     private AddressRouted destination;
     private boolean IsOldVersion = true;
 
-    BC8010(Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC8010(Block block, Vehicle vehicle) {
         super(block, vehicle);
         this.IsTrackNumberProvider = true;
         From = this.getCardinal().getOppositeFace();
@@ -60,7 +60,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
         this.RoutingTable = loadChest();
     }
 
-    BC8010(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle, boolean isOldVersion) {
+    BC8010(Block block, Vehicle vehicle, boolean isOldVersion) {
         this(block, vehicle);
         this.IsOldVersion = isOldVersion;
     }
@@ -102,7 +102,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
         try {
 
             BlockFace direction, to;
-            Router router = ByteCart.myPlugin.getCollisionAvoiderManager().<Router>getCollisionAvoider(builder);
+            Router router = ByteCart.myPlugin.getCollisionAvoiderManager().getCollisionAvoider(builder);
             boolean isTrain = isTrain(destination);
 
             // Here begins the triggered action
@@ -111,8 +111,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
                 ByteCart.log.info("Router location: X: " + center.getX() + " Y: " + center.getY() + " Z: " + center.getZ());
             }
 
-
-            // is this an wanderer who needs special routing ? no then routing normally
+// is this an wanderer who needs special routing ? no then routing normally
             if (selectWanderer()) {
 
                 // if this is a cart in a train
@@ -146,8 +145,7 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
                         ByteCart.log.info("ByteCart : TTL is " + destination.getTTL());
                     }
 
-
-                    // if this is the first car of a train
+// if this is the first car of a train
                     // we keep it during 2 s
                     if (isTrain) {
                         this.setWasTrain(this.getLocation(), true);
@@ -188,7 +186,6 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
 
             // here we perform routes update
             wanderer.doAction(to);
-
         } catch (ClassCastException e) {
             if (ByteCart.debug)
                 ByteCart.log.info("ByteCart : " + e.toString());
@@ -205,8 +202,6 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
             // there was no inventory in the cart
             return;
         }
-
-
     }
 
     /**
@@ -222,8 +217,8 @@ public class BC8010 extends AbstractTriggeredSign implements BCRouter, Triggable
     /**
      * Compute the direction to take
      *
-     * @param address            the destination address
-     * @param sign                 the BC sign
+     * @param address      the destination address
+     * @param sign         the BC sign
      * @param RoutingTable the routing table contained in the chest
      * @return the direction to destination, or to ring 0. If ring 0 does not exist, random direction
      */

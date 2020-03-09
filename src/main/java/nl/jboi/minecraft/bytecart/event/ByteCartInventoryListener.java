@@ -18,29 +18,29 @@ import org.bukkit.inventory.InventoryHolder;
  */
 public class ByteCartInventoryListener implements Listener {
 
-    private final Player Player;
+    private final Player player;
     // the Runnable to update
-    private final ModifiableRunnable<Inventory> Execute;
+    private final ModifiableRunnable<Inventory> exec;
     // flag set when we deal with an updater command
     private final boolean isUpdater;
 
-    public ByteCartInventoryListener(ByteCart plugin, Player player, ModifiableRunnable<Inventory> execute,
-                                     boolean isupdater) {
-        this.Player = player;
-        this.Execute = execute;
-        this.isUpdater = isupdater;
+    public ByteCartInventoryListener(ByteCart plugin, Player player, ModifiableRunnable<Inventory> exec,
+                                     boolean is_updater) {
+        this.player = player;
+        this.exec = exec;
+        this.isUpdater = is_updater;
         // self registering as Listener
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler(ignoreCancelled = false)
+    @EventHandler()
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        Entity entity;
-        Inventory inv;
-        if (event.getPlayer().equals(Player) && ((entity = event.getRightClicked()) instanceof InventoryHolder)) {
+        Entity entity = event.getRightClicked();
+        if (event.getPlayer() == player && entity instanceof InventoryHolder) {
+            Inventory inv = ((InventoryHolder) entity).getInventory();
             // we set the member and run the Runnable
-            this.Execute.SetParam(inv = ((InventoryHolder) entity).getInventory());
-            this.Execute.run();
+            this.exec.SetParam(inv);
+            this.exec.run();
             // we cancel the right-click
             event.setCancelled(true);
 
@@ -55,5 +55,4 @@ public class ByteCartInventoryListener implements Listener {
         PlayerInteractEntityEvent.getHandlerList().unregister(this);
     }
 }
-
 

@@ -1,12 +1,9 @@
 package nl.jboi.minecraft.bytecart.sign;
 
-import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.hal.PinRegistry;
-import nl.jboi.minecraft.bytecart.io.InputFactory;
-import nl.jboi.minecraft.bytecart.io.InputPin;
-import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.api.ByteCartAPI;
+import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide.Side;
 import nl.jboi.minecraft.bytecart.api.event.SignPostStationEvent;
@@ -14,22 +11,25 @@ import nl.jboi.minecraft.bytecart.api.event.SignPreStationEvent;
 import nl.jboi.minecraft.bytecart.api.sign.Station;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.hal.PinRegistry;
+import nl.jboi.minecraft.bytecart.io.InputFactory;
+import nl.jboi.minecraft.bytecart.io.InputPin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Vehicle;
 
 import java.io.IOException;
-
 
 /**
  * A station sign
  */
 public final class BC9001 extends AbstractBC9000 implements Station, Powerable, Triggable {
 
-
-    BC9001(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC9001(Block block, Vehicle vehicle) {
         super(block, vehicle);
         this.netmask = ByteCartAPI.MAXSTATIONLOG;
     }
@@ -75,7 +75,6 @@ public final class BC9001 extends AbstractBC9000 implements Station, Powerable, 
 
                 if (this.isAddressMatching() && this.getName().equals("BC9001") && this.getInventory().getHolder() instanceof Player) {
                     ((Player) this.getInventory().getHolder()).sendMessage(ChatColor.DARK_GREEN + "[Bytecart] " + ChatColor.GREEN + ByteCart.myPlugin.getConfig().getString("Info.Destination") + " " + this.getFriendlyName() + " (" + sign + ")");
-
                 }
                 return;
             }
@@ -96,8 +95,6 @@ public final class BC9001 extends AbstractBC9000 implements Station, Powerable, 
 
             // routing
             this.getOutput(0).setAmount(0); // unpower levers
-
-
         } catch (ClassCastException e) {
             if (ByteCart.debug)
                 ByteCart.log.info("ByteCart : " + e.toString());
@@ -112,15 +109,12 @@ public final class BC9001 extends AbstractBC9000 implements Station, Powerable, 
             // there was no inventory in the cart
             return;
         }
-
-
     }
 
     @Override
     public void power() {
         this.powerBC7003();
     }
-
 
     /**
      * Manage the red light signal when triggered

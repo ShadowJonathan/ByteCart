@@ -1,14 +1,14 @@
 package nl.jboi.minecraft.bytecart.commands;
 
+import com.google.common.collect.Lists;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.ModifiableRunnable;
+import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
 import nl.jboi.minecraft.bytecart.event.ByteCartInventoryListener;
 import nl.jboi.minecraft.bytecart.event.ByteCartUpdaterMoveListener;
-import nl.jboi.minecraft.bytecart.ModifiableRunnable;
 import nl.jboi.minecraft.bytecart.updater.UpdaterFactory;
 import nl.jboi.minecraft.bytecart.util.LogUtil;
 import nl.jboi.minecraft.bytecart.wanderer.BCWandererManager;
-import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
-import com.google.common.collect.Lists;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -42,7 +42,6 @@ public class CommandBCUpdater implements CommandExecutor, TabCompleter {
 
             if (args.length == 0 || args.length > 4 || !Wanderer.Level.isMember(args[0].toLowerCase()))
                 return false;
-
 
             if (args.length == 1
                     && !args[0].equalsIgnoreCase("backbone")
@@ -81,8 +80,7 @@ public class CommandBCUpdater implements CommandExecutor, TabCompleter {
                 }
             }
 
-
-            final class Execute implements ModifiableRunnable<Inventory> {
+            final class UpdaterInventoryRunnable implements ModifiableRunnable<Inventory> {
 
                 private final Player player;
                 private final Wanderer.Level level;
@@ -91,8 +89,7 @@ public class CommandBCUpdater implements CommandExecutor, TabCompleter {
                 private boolean isfullreset;
                 private boolean isnew;
 
-
-                private Execute(Player player, Wanderer.Level level, int region, boolean isfullreset, boolean isnew) {
+                private UpdaterInventoryRunnable(Player player, Wanderer.Level level, int region, boolean isfullreset, boolean isnew) {
                     this.player = player;
                     this.level = level;
                     this.region = region;
@@ -115,23 +112,21 @@ public class CommandBCUpdater implements CommandExecutor, TabCompleter {
                     }
                 }
 
-
                 /**
-                 * @param inventory
-                 * @param inventory the inventory to set
+                 * @param t
+                 * @param t the inventory to set
                  */
 
                 @Override
-                public void SetParam(Inventory inventory) {
-                    this.inventory = inventory;
+                public void SetParam(Inventory t) {
+                    this.inventory = t;
                 }
-
             }
 
             LogUtil.sendSuccess(player, ByteCart.myPlugin.getConfig().getString("Info.RightClickCart"));
 
             new ByteCartInventoryListener(ByteCart.myPlugin, player,
-                    new Execute(player, Wanderer.Level.valueOf(args[0].toUpperCase()), region, full_reset, isnew),
+                    new UpdaterInventoryRunnable(player, Wanderer.Level.valueOf(args[0].toUpperCase()), region, full_reset, isnew),
                     true);
         }
         return true;

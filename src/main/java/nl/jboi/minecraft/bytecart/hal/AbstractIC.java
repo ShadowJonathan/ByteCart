@@ -1,11 +1,11 @@
 package nl.jboi.minecraft.bytecart.hal;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import nl.jboi.minecraft.bytecart.api.hal.IC;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -15,7 +15,6 @@ import org.bukkit.block.data.Rotatable;
 
 import java.util.Map;
 import java.util.WeakHashMap;
-
 
 // All ICs must inherit from this class
 
@@ -32,6 +31,7 @@ public abstract class AbstractIC implements IC {
     private int input_args = 0;
     private RegistryOutput[] output = new RegistryOutput[6];
     private int output_args = 0;
+
     public AbstractIC(Block block) {
         this.Block = block;
         if (block != null) {
@@ -73,23 +73,12 @@ public abstract class AbstractIC implements IC {
     }
 
     public static boolean checkEligibility(String s) {
-
-        if (!(s.matches("^\\[BC[0-9]{4,4}\\]$"))) {
-            return false;
-        }
-
-        return true;
-
+        return s.matches("^\\[BC[0-9]{4}]$");
     }
 
     private static boolean checkLooseEligibility(String s) {
-
-        if (!(s.matches("^BC[0-9]{4,4}$"))) {
-            return false;
-        }
-
-        return true;
-
+        // todo make remove "^$"?
+        return s.matches("^BC[0-9]{4}$");
     }
 
     @Override

@@ -1,19 +1,15 @@
 package nl.jboi.minecraft.bytecart.api.util;
 
+import nl.jboi.minecraft.bytecart.api.data.Partitionable;
 import nl.jboi.minecraft.bytecart.api.hal.Registry;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
 import nl.jboi.minecraft.bytecart.api.hal.VirtualRegistry;
-import nl.jboi.minecraft.bytecart.api.data.Partitionable;
 import org.bukkit.block.BlockFace;
 
 /**
  * A 4-bit registry with 1 cardinal direction per bit
  */
 public final class DirectionRegistry implements Partitionable {
-    /**
-     *
-     */
-    private VirtualRegistry registry;
 
     /*
      * bit 3 : SOUTH
@@ -21,6 +17,7 @@ public final class DirectionRegistry implements Partitionable {
      * bit 1 : NORTH
      * bit 0 : EAST
      */
+    private VirtualRegistry registry;
 
     public DirectionRegistry() {
         this.registry = new VirtualRegistry(4);
@@ -69,7 +66,6 @@ public final class DirectionRegistry implements Partitionable {
             default:
                 break;
         }
-
     }
 
     public final BlockFace ToString() {
@@ -143,7 +139,6 @@ public final class DirectionRegistry implements Partitionable {
             return true;
         if (!(o instanceof DirectionRegistry))
             return false;
-
         return getAmount() == ((DirectionRegistry) o).getAmount();
     }
 }

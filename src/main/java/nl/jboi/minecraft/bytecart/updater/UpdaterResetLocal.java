@@ -1,9 +1,8 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.sign.BC9001;
-import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.ByteCartAPI;
+import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide.Side;
 import nl.jboi.minecraft.bytecart.api.event.UpdaterClearStationEvent;
@@ -12,6 +11,7 @@ import nl.jboi.minecraft.bytecart.api.event.UpdaterSignInvalidateEvent;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.wanderer.AbstractWanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.sign.BC9001;
 import org.bukkit.Bukkit;
 import org.bukkit.block.BlockFace;
 

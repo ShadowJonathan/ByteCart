@@ -1,6 +1,3 @@
-/**
- *
- */
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
@@ -8,6 +5,8 @@ import nl.jboi.minecraft.bytecart.address.AddressString;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryBoth;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Vehicle;
 
 import java.util.Random;
 
@@ -16,7 +15,7 @@ import java.util.Random;
  */
 final class BC7019 extends BC7010 implements Triggable {
 
-    BC7019(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC7019(Block block, Vehicle vehicle) {
         super(block, vehicle);
         this.StorageCartAllowed = true;
         this.addIO();

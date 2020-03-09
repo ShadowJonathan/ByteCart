@@ -9,5 +9,5 @@ public interface Clickable extends IC {
     /**
      * Method called when a player right-clicks the IC
      */
-	void click();
+    void click();
 }

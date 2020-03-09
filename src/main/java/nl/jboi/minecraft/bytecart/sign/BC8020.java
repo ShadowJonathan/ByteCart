@@ -1,30 +1,29 @@
 package nl.jboi.minecraft.bytecart.sign;
 
-import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
-import nl.jboi.minecraft.bytecart.wanderer.BCWandererManager;
+import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.sign.BCRouter;
 import nl.jboi.minecraft.bytecart.api.wanderer.AbstractWanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Scope;
+import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
+import nl.jboi.minecraft.bytecart.wanderer.BCWandererManager;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-
+import org.bukkit.entity.Vehicle;
 
 /**
  * An IC at the entry of a L2 router
  */
 class BC8020 extends BC8010 implements BCRouter, Triggable, HasRoutingTable {
 
-
-    BC8020(Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC8020(Block block, Vehicle vehicle) {
         super(block, vehicle);
         this.IsTrackNumberProvider = false;
     }
 
-    BC8020(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle, boolean isOldVersion) {
+    BC8020(Block block, Vehicle vehicle, boolean isOldVersion) {
         super(block, vehicle, isOldVersion);
         this.IsTrackNumberProvider = false;
     }
@@ -55,7 +54,6 @@ class BC8020 extends BC8010 implements BCRouter, Triggable, HasRoutingTable {
 
         // If everything has failed, then we randomize output direction
         return AbstractWanderer.getRandomBlockFace(RoutingTable, getCardinal().getOppositeFace());
-
     }
 
     @Override

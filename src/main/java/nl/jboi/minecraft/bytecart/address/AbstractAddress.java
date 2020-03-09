@@ -1,8 +1,7 @@
 package nl.jboi.minecraft.bytecart.address;
 
-import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.ByteCartAPI;
-
+import nl.jboi.minecraft.bytecart.api.address.Address;
 
 /**
  * Abstract class implementing basic operations on address
@@ -33,7 +32,6 @@ abstract class AbstractAddress implements Address {
         this.setTrack(a.getTrack().getAmount());
         this.setRegion(a.getRegion().getAmount());
         return this.UpdateAddress();
-
     }
 
     @Override
@@ -123,7 +121,6 @@ abstract class AbstractAddress implements Address {
         public int getLength() {
             return Length;
         }
-
 
         /**
          * @return the offset

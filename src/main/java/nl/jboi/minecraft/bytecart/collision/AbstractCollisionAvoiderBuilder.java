@@ -40,5 +40,4 @@ abstract class AbstractCollisionAvoiderBuilder {
     public Triggable getIc() {
         return ic;
     }
-
 }

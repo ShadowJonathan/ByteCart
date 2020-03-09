@@ -27,7 +27,6 @@ final class UpdaterResetRegion extends UpdaterRegion implements Wanderer {
         return getRandomBlockFace(getRoutingTable(), getFrom().getBlockFace());
     }
 
-
     @Override
     protected final void reset() {
         // case of reset

@@ -55,5 +55,4 @@ public final class ByteCartAPI {
     public static Logger getLogger() {
         return plugin.getLog();
     }
-
 }

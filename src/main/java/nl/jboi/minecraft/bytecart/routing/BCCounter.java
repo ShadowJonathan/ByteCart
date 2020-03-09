@@ -14,9 +14,6 @@ import java.util.Map;
  */
 public final class BCCounter implements Serializable, Counter {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 6858180714411403984L;
     private final Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
@@ -26,12 +23,12 @@ public final class BCCounter implements Serializable, Counter {
     /**
      * Get a counter by its id
      *
-     * @param counter
+     * @param id the counter id to get
      * @return the counter
      */
     @Override
-    public int getCount(int counter) {
-        return this.map.containsKey(counter) ? this.map.get(counter) : 0;
+    public int getCount(int id) {
+        return this.map.getOrDefault(id, 0);
     }
 
     /**
@@ -53,7 +50,6 @@ public final class BCCounter implements Serializable, Counter {
     public void incrementCount(int counter, int value) {
         this.map.put(counter, getCount(counter) + value);
     }
-
 
     /**
      * Set the value of a counter
@@ -146,7 +142,6 @@ public final class BCCounter implements Serializable, Counter {
         if (ByteCart.debug)
             ByteCart.log.info("ByteCart : minimum found ring " + index + " with " + min);
         return index;
-
     }
 
     @Override
@@ -167,6 +162,4 @@ public final class BCCounter implements Serializable, Counter {
     public int getCounterLength() {
         return 32;
     }
-
-
 }

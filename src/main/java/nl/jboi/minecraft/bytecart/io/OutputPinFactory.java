@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Switch;
 
-
 /**
  * Factory to get an instance of an output component
  */
@@ -27,7 +26,5 @@ public final class OutputPinFactory {
         }
 
         return null;
-
     }
-
 }

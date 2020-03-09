@@ -117,5 +117,4 @@ public interface RoutingTable {
      * @return a set of track numbers
      */
     Set<Integer> getNotDirectlyConnectedList(BlockFace direction);
-
 }

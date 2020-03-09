@@ -68,7 +68,6 @@ public final class ExpirableMap<K, T> extends Expirable<K> {
         this.cancel(key);
     }
 
-
     /**
      * Get the value of the element having a specific key
      *

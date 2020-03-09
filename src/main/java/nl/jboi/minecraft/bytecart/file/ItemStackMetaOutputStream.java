@@ -14,7 +14,6 @@ final class ItemStackMetaOutputStream extends ItemStackOutputStream {
     private final BookOutputStream OutputStream;
     private boolean isClosed = false;
 
-
     /**
      * @param stack        the stack containing the book
      * @param outputstream an output stream for the book
@@ -26,14 +25,14 @@ final class ItemStackMetaOutputStream extends ItemStackOutputStream {
 
     @Override
     public void write(byte[] cbuf, int off, int len) throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("ItemStack has been already closed");
         OutputStream.write(cbuf, off, len);
     }
 
     @Override
     public void flush() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("ItemStack has been already closed");
         OutputStream.flush();
         getItemStack().setItemMeta(OutputStream.getBook());
@@ -43,7 +42,7 @@ final class ItemStackMetaOutputStream extends ItemStackOutputStream {
 
     @Override
     public void close() throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("ItemStack has been already closed");
         if (ByteCart.debug)
             ByteCart.log.info("ByteCart : Closing itemstack");
@@ -53,7 +52,7 @@ final class ItemStackMetaOutputStream extends ItemStackOutputStream {
 
     @Override
     public void write(int b) throws IOException {
-        if (isClosed)
+        if (isClosed) // fixme simplify
             throw new IOException("ItemStack has been already closed");
         OutputStream.write(b);
     }

@@ -49,8 +49,6 @@ public class DefaultLocalWanderer<T extends InventoryContent> extends AbstractWa
             this.getContent().setCurrent(0);
             save();
         }
-
-
     }
 
     @Override
@@ -65,7 +63,6 @@ public class DefaultLocalWanderer<T extends InventoryContent> extends AbstractWa
                 && !this.isExactSubnet(this.getFirstStationNumber(), this.getNetmask())
                 && this.getWandererRegion() == this.getCounter().getCount(counterSlot.REGION.slot))
             return IntersectionSide.Side.LEVER_ON;
-
         return IntersectionSide.Side.LEVER_OFF;
     }
 
@@ -171,7 +168,6 @@ public class DefaultLocalWanderer<T extends InventoryContent> extends AbstractWa
         this.getCounter().incrementCount(0, 32);
 
         save();
-
     }
 
     @Override
@@ -298,5 +294,4 @@ public class DefaultLocalWanderer<T extends InventoryContent> extends AbstractWa
             this.slot = i;
         }
     }
-
 }

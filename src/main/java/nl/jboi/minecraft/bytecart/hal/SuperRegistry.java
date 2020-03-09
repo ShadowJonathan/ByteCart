@@ -33,7 +33,6 @@ public class SuperRegistry<T extends Registry> implements RegistryBoth {
             ((RegistryOutput) this.Registry1).setBit(index, value);
         else
             ((RegistryOutput) this.Registry2).setBit(index - this.Registry1.length(), value);
-
     }
 
     @Override
@@ -58,7 +57,5 @@ public class SuperRegistry<T extends Registry> implements RegistryBoth {
     public void setAmount(int amount) {
         ((RegistryOutput) this.Registry1).setAmount(amount >> (this.Registry2.length()) % (1 << this.Registry1.length()));
         ((RegistryOutput) this.Registry2).setAmount(amount & ((1 << this.Registry2.length()) - 1));
-
     }
-
 }

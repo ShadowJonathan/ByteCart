@@ -53,5 +53,4 @@ public class VirtualRegistry implements RegistryBoth, Serializable {
     public void setAmount(int amount) {
         this.Virtual = amount % (1 << this.length());
     }
-
 }

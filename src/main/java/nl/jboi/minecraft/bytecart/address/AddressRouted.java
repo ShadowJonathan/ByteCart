@@ -2,7 +2,6 @@ package nl.jboi.minecraft.bytecart.address;
 
 import nl.jboi.minecraft.bytecart.api.address.Address;
 
-
 /**
  * Represents an address currently routed
  */

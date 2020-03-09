@@ -1,17 +1,17 @@
 package nl.jboi.minecraft.bytecart.updater;
 
-import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.io.ComponentSign;
-import nl.jboi.minecraft.bytecart.sign.BC9001;
-import nl.jboi.minecraft.bytecart.util.LogUtil;
-import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.api.ByteCartAPI;
+import nl.jboi.minecraft.bytecart.api.address.Address;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide.Side;
 import nl.jboi.minecraft.bytecart.api.event.*;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.wanderer.DefaultLocalWanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
+import nl.jboi.minecraft.bytecart.io.ComponentSign;
+import nl.jboi.minecraft.bytecart.sign.BC9001;
+import nl.jboi.minecraft.bytecart.util.LogUtil;
 import org.bukkit.Bukkit;
 
 import java.util.Stack;
@@ -170,7 +170,6 @@ public class UpdaterLocal extends DefaultLocalWanderer<UpdaterContent> implement
         return address;
     }
 
-
     private boolean isInSubnet(int address, int netmask) {
         return (address >= this.getFirstStationNumber() && (address | ((ByteCartAPI.MAXSTATION - 1) >> netmask)) < this.getLastStationNumber());
     }
@@ -180,7 +179,6 @@ public class UpdaterLocal extends DefaultLocalWanderer<UpdaterContent> implement
                 || getSignAddress().getTrack().getAmount() != this.getCounter().getCount(counterSlot.RING.slot)
                 || !isInSubnet(getSignAddress().getStation().getAmount(), this.getNetmask());
     }
-
 
     private int getCurrent() {
         return this.getCounter().getCount(counterSlot.RING.slot);

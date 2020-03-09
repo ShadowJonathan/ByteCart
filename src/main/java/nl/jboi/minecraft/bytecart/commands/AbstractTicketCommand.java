@@ -1,8 +1,8 @@
 package nl.jboi.minecraft.bytecart.commands;
 
+import com.google.common.collect.Lists;
 import nl.jboi.minecraft.bytecart.address.AddressString;
 import nl.jboi.minecraft.bytecart.api.ByteCartPlugin;
-import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

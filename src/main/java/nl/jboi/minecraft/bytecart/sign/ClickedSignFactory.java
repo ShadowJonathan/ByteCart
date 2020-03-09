@@ -1,7 +1,7 @@
 package nl.jboi.minecraft.bytecart.sign;
 
-import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
  */
 public final class ClickedSignFactory {
 
-
     /**
      * Get an IC at the clicked sign
      *
@@ -25,20 +24,16 @@ public final class ClickedSignFactory {
      */
     public static Clickable getClickedIC(Block block, Player player) {
 
-
         if (AbstractIC.checkEligibility(block)) {
 
             // if there is really a BC sign post
             // we extract its #
 
             return ClickedSignFactory.getClickedIC(block, ((Sign) block.getState()).getLine(1), player);
-
-
         }
         // no BC sign post
 
         return null;
-
     }
 
     /**
@@ -66,7 +61,6 @@ public final class ClickedSignFactory {
         return null;
     }
 
-
     /**
      * Get an IC with the specific code
      *
@@ -92,6 +86,5 @@ public final class ClickedSignFactory {
         }
 
         return null;
-
     }
 }

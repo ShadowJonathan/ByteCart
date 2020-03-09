@@ -15,9 +15,6 @@ public class SimpleCollisionAvoiderBuilder extends AbstractCollisionAvoiderBuild
     @Override
     @SuppressWarnings("unchecked")
     public <T extends CollisionAvoider> T getCollisionAvoider() {
-
         return (T) new SimpleCollisionAvoider(this.ic, this.loc);
     }
-
-
 }

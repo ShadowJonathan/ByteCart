@@ -39,11 +39,9 @@ final class BCBukkitRunnable<K> {
             if (!Expirable.getThreadMap().containsKey(Key)) {
                 task = (Expirable.isSync() ? this.runTaskLater(objects)
                         : this.runTaskLaterAsynchronously(objects));
-
             } else {
                 BukkitTask old = Expirable.getThreadMap().get(Key);
                 BukkitRunnable runnable = new Expire(Expirable, Key, objects);
-
 
                 if (old.isSync())
                     task = runnable.runTaskLater(ByteCart.myPlugin, duration);
@@ -72,8 +70,7 @@ final class BCBukkitRunnable<K> {
      * Cancel the task
      */
     void cancel() {
-        if (Expirable.getThreadMap().containsKey(Key))
-            Expirable.getThreadMap().remove(Key);
+        Expirable.getThreadMap().remove(Key);
     }
 
     /**
@@ -84,7 +81,7 @@ final class BCBukkitRunnable<K> {
      */
     private BukkitTask runTaskLater(Object... objects) {
         BukkitRunnable runnable = new Expire(Expirable, Key, objects);
-        org.bukkit.scheduler.BukkitTask task = runnable.runTaskLater(ByteCart.myPlugin, Expirable.getDuration());
+        BukkitTask task = runnable.runTaskLater(ByteCart.myPlugin, Expirable.getDuration());
         return task;
     }
 
@@ -96,7 +93,7 @@ final class BCBukkitRunnable<K> {
      */
     private BukkitTask runTaskLaterAsynchronously(Object... objects) {
         BukkitRunnable runnable = new Expire(Expirable, Key, objects);
-        org.bukkit.scheduler.BukkitTask task = runnable.runTaskLaterAsynchronously(ByteCart.myPlugin, Expirable.getDuration());
+        BukkitTask task = runnable.runTaskLaterAsynchronously(ByteCart.myPlugin, Expirable.getDuration());
         return task;
     }
 
@@ -122,8 +119,6 @@ final class BCBukkitRunnable<K> {
             map.remove(key);
             this.expirable.expire(params);
         }
-
     }
-
 }
 

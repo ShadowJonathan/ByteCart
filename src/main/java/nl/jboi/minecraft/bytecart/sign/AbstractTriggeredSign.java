@@ -1,16 +1,19 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import nl.jboi.minecraft.bytecart.ByteCart;
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressRouted;
 import nl.jboi.minecraft.bytecart.address.TicketFactory;
-import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Vehicle;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import java.util.List;
@@ -22,14 +25,14 @@ import java.util.List;
  */
 abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
 
-    private final org.bukkit.entity.Vehicle Vehicle;
-    private org.bukkit.inventory.Inventory Inventory;
+    private final Vehicle vehicle;
+    private Inventory inventory;
 
-    AbstractTriggeredSign(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    AbstractTriggeredSign(Block block, Vehicle vehicle) {
         super(block);
-        this.Vehicle = vehicle;
+        this.vehicle = vehicle;
 
-        this.Inventory = this.extractInventory();
+        this.inventory = this.extractInventory();
     }
 
     public static boolean isTrain(Address address) {
@@ -41,8 +44,8 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
     /**
      * @return The vehicle which triggered the sign.
      */
-    public final org.bukkit.entity.Vehicle getVehicle() {
-        return Vehicle;
+    public final Vehicle getVehicle() {
+        return vehicle;
     }
 
     /**
@@ -51,13 +54,12 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
      *
      * @return Inventory with address configuration from the current vehicle.
      */
-    private org.bukkit.inventory.Inventory extractInventory() {
+    private Inventory extractInventory() {
 
-        org.bukkit.inventory.Inventory newInv = Bukkit.createInventory(null, 27);
-
+        Inventory newInv = Bukkit.createInventory(null, 27);
 
         // we load inventory of cart or player
-        if (this.Vehicle != null) {
+        if (this.vehicle != null) {
 
             if (this.getVehicle() instanceof InventoryHolder)
                 return ((InventoryHolder) this.getVehicle()).getInventory();
@@ -88,7 +90,6 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
                 myAddress.initializeTTL();
                 myAddress.finalizeAddress();
             }
-
         }
         return newInv;
     }
@@ -96,8 +97,8 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
     /**
      * @return The inventory of the vehicle which triggered this sign.
      */
-    public org.bukkit.inventory.Inventory getInventory() {
-        return Inventory;
+    public Inventory getInventory() {
+        return inventory;
     }
 
     /**
@@ -105,8 +106,8 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
      *
      * @param inv
      */
-    protected void setInventory(org.bukkit.inventory.Inventory inv) {
-        this.Inventory = inv;
+    protected void setInventory(Inventory inv) {
+        this.inventory = inv;
     }
 
     @Override
@@ -139,7 +140,6 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
     protected final void setWasTrain(Location loc, boolean b) {
         if (b)
             ByteCart.myPlugin.getIsTrainManager().getMap().put(loc, true);
-
     }
 
     /**
@@ -151,6 +151,4 @@ abstract class AbstractTriggeredSign extends AbstractIC implements Triggable {
     public boolean isLeverReversed() {
         return false;
     }
-
-
 }

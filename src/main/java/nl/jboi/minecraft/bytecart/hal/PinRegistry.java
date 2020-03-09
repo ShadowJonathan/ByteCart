@@ -1,10 +1,10 @@
 package nl.jboi.minecraft.bytecart.hal;
 
-import nl.jboi.minecraft.bytecart.io.InputPin;
-import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.api.hal.Registry;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryInput;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
+import nl.jboi.minecraft.bytecart.io.InputPin;
+import nl.jboi.minecraft.bytecart.io.OutputPin;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,9 +47,7 @@ public class PinRegistry<T> implements RegistryInput, RegistryOutput, Registry {
 
                 if (((InputPin) it.previous()).read()) {
                     amount += i;
-
                 }
-
             }
         }
         return amount;
@@ -59,7 +57,6 @@ public class PinRegistry<T> implements RegistryInput, RegistryOutput, Registry {
     public void setAmount(int amount) {
         int i = amount;
 
-
         for (ListIterator<T> it = this.PinArray.listIterator(this.length()); it.hasPrevious(); i = i >> 1) {
             if (it.previous() != null) {
 
@@ -67,15 +64,11 @@ public class PinRegistry<T> implements RegistryInput, RegistryOutput, Registry {
 
                 if ((i & 1) != 0) {
                     ((OutputPin) it.previous()).write(true);
-
                 } else {
                     ((OutputPin) it.previous()).write(false);
-
                 }
             }
         }
-
-
     }
 
     @Override
@@ -87,6 +80,4 @@ public class PinRegistry<T> implements RegistryInput, RegistryOutput, Registry {
     public boolean getBit(int index) {
         return ((InputPin) this.PinArray.get(index)).read();
     }
-
-
 }

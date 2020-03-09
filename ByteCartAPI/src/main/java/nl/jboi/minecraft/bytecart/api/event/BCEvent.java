@@ -20,6 +20,4 @@ public abstract class BCEvent extends Event {
     public IC getIc() {
         return ic;
     }
-
-
 }

@@ -20,6 +20,4 @@ public class RouterCollisionAvoiderBuilder extends AbstractCollisionAvoiderBuild
     public <T extends CollisionAvoider> T getCollisionAvoider() {
         return (T) new StraightRouter(this.ic.getCardinal().getOppositeFace(), this.loc, this.IsOldVersion);
     }
-
-
 }

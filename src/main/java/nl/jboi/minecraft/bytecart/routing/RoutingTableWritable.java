@@ -1,13 +1,12 @@
 package nl.jboi.minecraft.bytecart.routing;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.updater.UpdaterContent;
 import nl.jboi.minecraft.bytecart.api.wanderer.RoutingTable;
+import nl.jboi.minecraft.bytecart.updater.UpdaterContent;
 import org.bukkit.block.BlockFace;
 
 import java.io.IOException;
 import java.util.Map;
-
 
 /**
  * A routing table

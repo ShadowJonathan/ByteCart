@@ -59,7 +59,6 @@ public final class ExpirableSet<K> extends Expirable<K> {
         this.cancel(key);
     }
 
-
     /**
      * Tells if the set contains an element
      *

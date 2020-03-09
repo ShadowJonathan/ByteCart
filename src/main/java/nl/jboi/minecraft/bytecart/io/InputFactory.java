@@ -4,7 +4,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.data.AnaloguePowerable;
 import org.bukkit.block.data.Powerable;
 
-
 /**
  * A factory for input pins
  */
@@ -25,9 +24,6 @@ public final class InputFactory {
         if (block.getBlockData() instanceof Powerable) {
             return (T) new ComponentLever(block);
         }
-
         return null;
-
     }
-
 }

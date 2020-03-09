@@ -1,9 +1,6 @@
 package nl.jboi.minecraft.bytecart.updater;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.file.InventoryFile;
-import nl.jboi.minecraft.bytecart.util.LogUtil;
-import nl.jboi.minecraft.bytecart.wanderer.BCWandererManager;
 import nl.jboi.minecraft.bytecart.api.event.UpdaterRemoveEvent;
 import nl.jboi.minecraft.bytecart.api.sign.BCSign;
 import nl.jboi.minecraft.bytecart.api.wanderer.InventoryContent;
@@ -11,6 +8,9 @@ import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Level;
 import nl.jboi.minecraft.bytecart.api.wanderer.Wanderer.Scope;
 import nl.jboi.minecraft.bytecart.api.wanderer.WandererFactory;
+import nl.jboi.minecraft.bytecart.file.InventoryFile;
+import nl.jboi.minecraft.bytecart.util.LogUtil;
+import nl.jboi.minecraft.bytecart.wanderer.BCWandererManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;

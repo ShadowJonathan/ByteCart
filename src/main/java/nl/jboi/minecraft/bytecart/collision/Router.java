@@ -84,5 +84,4 @@ public interface Router extends CollisionAvoider {
      * @return the direction
      */
     BlockFace getTo();
-
 }

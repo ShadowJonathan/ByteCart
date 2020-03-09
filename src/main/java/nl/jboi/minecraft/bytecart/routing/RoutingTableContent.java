@@ -10,9 +10,6 @@ import nl.jboi.minecraft.bytecart.api.hal.VirtualRegistry;
  */
 abstract class RoutingTableContent<T extends RoutingTableContent<T>> implements Comparable<T> {
 
-    /**
-     *
-     */
     private final int length;
     private final RegistryBoth data;
 

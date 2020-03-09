@@ -10,10 +10,10 @@ public interface WandererManager {
     /**
      * Register a wanderer factory
      *
-     * @param wanderer the wanderer class implementing the wanderer
-     * @param name     the name that will reference this type of wanderer
+     * @param key    the name that will reference this type of wanderer
+     * @param factory the wanderer class implementing the wanderer
      */
-    boolean register(WandererFactory wanderer, String name);
+    boolean register(String key, WandererFactory factory);
 
     /**
      * Unregister a wanderer factory. All wanderers in the network
@@ -21,7 +21,7 @@ public interface WandererManager {
      *
      * @param name the name of the type of wanderer
      */
-    void unregister(String name);
+    void unregister(String key);
 
     /**
      * Get a wanderer factory

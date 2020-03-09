@@ -1,19 +1,21 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
+import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.ComponentSign;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
-import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
-import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Vehicle;
 
 final class BC7009 extends AbstractTriggeredSign implements Triggable {
 
     private final BlockFace From;
 
-    BC7009(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC7009(Block block, Vehicle vehicle) {
         super(block, vehicle);
         From = getCardinal().getOppositeFace();
     }
@@ -54,30 +56,26 @@ final class BC7009 extends AbstractTriggeredSign implements Triggable {
 
     /**
      * Registers levers as output
-     *
-     * @param from   the origin axis
-     * @param center the center of the router
      */
     private void addIO() {
 
         // Center of the device, at sign level
-        org.bukkit.block.Block center = this.getBlock().getRelative(this.getCardinal(), 2).getRelative(MathUtil.clockwise(this.getCardinal()));
+        Block center = this.getBlock().getRelative(this.getCardinal(), 2).getRelative(MathUtil.clockwise(this.getCardinal()));
 
         // Main output
-        OutputPin[] sortie = new OutputPin[4];
-        // East
-        sortie[0] = OutputPinFactory.getOutput(center.getRelative(BlockFace.WEST, 3).getRelative(BlockFace.SOUTH));
-        // North
-        sortie[1] = OutputPinFactory.getOutput(center.getRelative(BlockFace.EAST, 3).getRelative(BlockFace.NORTH));
-        // South
-        sortie[3] = OutputPinFactory.getOutput(center.getRelative(BlockFace.SOUTH, 3).getRelative(BlockFace.EAST));
-        // West
-        sortie[2] = OutputPinFactory.getOutput(center.getRelative(BlockFace.NORTH, 3).getRelative(BlockFace.WEST));
+        OutputPin[] main = new OutputPin[4];
 
-        RegistryOutput main = new PinRegistry<OutputPin>(sortie);
+        /** fixme rework {@link nl.jboi.minecraft.bytecart.collision.AbstractRouter#addIO} */
+        // East
+        main[0] = OutputPinFactory.getOutput(center.getRelative(BlockFace.WEST, 3).getRelative(BlockFace.SOUTH));
+        // North
+        main[1] = OutputPinFactory.getOutput(center.getRelative(BlockFace.EAST, 3).getRelative(BlockFace.NORTH));
+        // South
+        main[3] = OutputPinFactory.getOutput(center.getRelative(BlockFace.SOUTH, 3).getRelative(BlockFace.EAST));
+        // West
+        main[2] = OutputPinFactory.getOutput(center.getRelative(BlockFace.NORTH, 3).getRelative(BlockFace.WEST));
 
         // output[0] is main levers
-        this.addOutputRegistry(main);
+        this.addOutputRegistry(new PinRegistry<>(main));
     }
-
 }

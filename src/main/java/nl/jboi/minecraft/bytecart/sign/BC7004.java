@@ -1,17 +1,16 @@
-/**
- *
- */
 package nl.jboi.minecraft.bytecart.sign;
 
 import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.address.AddressString;
 import nl.jboi.minecraft.bytecart.address.TicketFactory;
+import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.InputFactory;
 import nl.jboi.minecraft.bytecart.io.InputPin;
-import nl.jboi.minecraft.bytecart.api.address.Address;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Rail;
 import org.bukkit.entity.Entity;
@@ -27,7 +26,7 @@ final class BC7004 extends AbstractIC implements Powerable {
     private final String type;
     private final String address;
 
-    public BC7004(org.bukkit.block.Block block, String type, String address) {
+    public BC7004(Block block, String type, String address) {
         super(block);
         this.type = type;
         this.address = address;
@@ -35,7 +34,7 @@ final class BC7004 extends AbstractIC implements Powerable {
 
     @Override
     public void power() {
-        org.bukkit.block.Block block = this.getBlock();
+        Block block = this.getBlock();
         // check if we are really powered
         if (!block.getRelative(MathUtil.clockwise(getCardinal())).isBlockPowered() && !block.getRelative(MathUtil.anticlockwise(getCardinal())).isBlockPowered()) {
             return;
@@ -55,8 +54,8 @@ final class BC7004 extends AbstractIC implements Powerable {
 
         // if wire is on, we spawn a cart
         if (this.getInput(0).getAmount() != 0) {
-            org.bukkit.block.Block rail = block.getRelative(BlockFace.UP, 2);
-            org.bukkit.Location loc = rail.getLocation();
+            Block rail = block.getRelative(BlockFace.UP, 2);
+            Location loc = rail.getLocation();
             // check that it is a track, and no cart is there
             if ((rail.getBlockData() instanceof Rail) && MathUtil.getVehicleByLocation(loc) == null) {
                 Entity entity = block.getWorld().spawnEntity(loc, getType());

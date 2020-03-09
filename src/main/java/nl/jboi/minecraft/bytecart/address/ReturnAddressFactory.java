@@ -1,8 +1,8 @@
 package nl.jboi.minecraft.bytecart.address;
 
 import nl.jboi.minecraft.bytecart.address.AddressBook.Parameter;
-import nl.jboi.minecraft.bytecart.file.BookFile;
 import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.file.BookFile;
 import nl.jboi.minecraft.bytecart.file.BookProperties;
 import org.bukkit.inventory.Inventory;
 

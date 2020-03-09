@@ -62,7 +62,6 @@ public final class TicketFactory {
             return;
 
         Ticket.createTicket(inv, Ticket.searchSlot(inv));
-
     }
 
     /**

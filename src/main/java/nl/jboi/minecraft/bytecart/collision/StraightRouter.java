@@ -1,13 +1,14 @@
 package nl.jboi.minecraft.bytecart.collision;
 
 import nl.jboi.minecraft.bytecart.api.util.DirectionRegistry;
+import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
 /**
  * A router where the cart goes straight
  */
 class StraightRouter extends AbstractRouter implements Router {
-    StraightRouter(BlockFace from, org.bukkit.Location loc, boolean isOldVersion) {
+    StraightRouter(BlockFace from, Location loc, boolean isOldVersion) {
         super(from, loc, isOldVersion);
 
         FromTo.put(Side.BACK, Side.STRAIGHT);

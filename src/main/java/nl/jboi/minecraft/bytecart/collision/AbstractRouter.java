@@ -1,18 +1,20 @@
 package nl.jboi.minecraft.bytecart.collision;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.util.MathUtil;
+import nl.jboi.minecraft.bytecart.data.ExpirableMap;
 import nl.jboi.minecraft.bytecart.hal.PinRegistry;
 import nl.jboi.minecraft.bytecart.io.OutputPin;
 import nl.jboi.minecraft.bytecart.io.OutputPinFactory;
 import nl.jboi.minecraft.bytecart.sign.Triggable;
-import nl.jboi.minecraft.bytecart.data.ExpirableMap;
-import nl.jboi.minecraft.bytecart.api.util.MathUtil;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
 
 abstract class AbstractRouter extends AbstractCollisionAvoider implements Router {
 
@@ -26,7 +28,7 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
 
     private boolean IsOldVersion;
 
-    AbstractRouter(BlockFace from, org.bukkit.Location loc, boolean isOldVersion) {
+    AbstractRouter(BlockFace from, Location loc, boolean isOldVersion) {
         super(loc);
         this.setFrom(from);
         this.IsOldVersion = isOldVersion;
@@ -91,7 +93,6 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
     public final BlockFace WishToGo(BlockFace from, BlockFace to, boolean isTrain) {
         //		IntersectionSide sfrom = getSide(from);
         //		IntersectionSide sto = getSide(to);
-
 
         if (ByteCart.debug)
             ByteCart.log.info("ByteCart : Router : coming from " + from + " going to " + to);
@@ -222,7 +223,7 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
      * @param from   the origin axis
      * @param center the center of the router
      */
-    private void addIO(BlockFace from, org.bukkit.block.Block center) {
+    private void addIO(BlockFace from, Block center) {
 
         BlockFace face = from;
         BlockFace face_cw = MathUtil.clockwise(from);
@@ -231,6 +232,8 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
         OutputPin[] main = new OutputPin[4];
 
         if (this.isIsOldVersion()) {
+
+            /** fixme rework {@link nl.jboi.minecraft.bytecart.sign.BC7009#addIO}*/
             // East
             main[0] = OutputPinFactory.getOutput(center.getRelative(BlockFace.WEST, 3).getRelative(BlockFace.SOUTH));
             // North
@@ -291,7 +294,7 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
     private void checkIOPresence(OutputPin[] pins, OutputPin[] alt_pins) {
         for (int i = 0; i < pins.length; i++)
             if (pins[i] == null && alt_pins[i] == null) {
-                ByteCart.log.log(java.util.logging.Level.SEVERE, "ByteCart : Lever missing or wrongly positioned in router " + this.getLocation());
+                ByteCart.log.log(Level.SEVERE, "ByteCart : Lever missing or wrongly positioned in router " + this.getLocation());
                 throw new NullPointerException();
             }
     }
@@ -304,7 +307,7 @@ abstract class AbstractRouter extends AbstractCollisionAvoider implements Router
     private void checkIOPresence(OutputPin[] pins) {
         for (OutputPin pin : pins)
             if (pin == null) {
-                ByteCart.log.log(java.util.logging.Level.SEVERE, "ByteCart : Lever missing or wrongly positioned in router " + this.getLocation());
+                ByteCart.log.log(Level.SEVERE, "ByteCart : Lever missing or wrongly positioned in router " + this.getLocation());
                 throw new NullPointerException();
             }
     }

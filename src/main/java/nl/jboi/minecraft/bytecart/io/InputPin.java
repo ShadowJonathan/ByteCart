@@ -9,5 +9,5 @@ public interface InputPin {
      *
      * @return true if 1, false otherwise
      */
-	boolean read();
+    boolean read();
 }

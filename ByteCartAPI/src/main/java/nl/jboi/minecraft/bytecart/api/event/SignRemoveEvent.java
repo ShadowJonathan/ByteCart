@@ -34,5 +34,4 @@ public final class SignRemoveEvent extends BCEvent {
     public Entity getEntity() {
         return entity;
     }
-
 }

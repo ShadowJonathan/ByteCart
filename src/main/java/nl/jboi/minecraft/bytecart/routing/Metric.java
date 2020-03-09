@@ -10,9 +10,6 @@ import java.io.ObjectOutput;
  */
 public final class Metric implements Comparable<Metric>, Externalizable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 7625856925617432369L;
     private Delay delay;
 

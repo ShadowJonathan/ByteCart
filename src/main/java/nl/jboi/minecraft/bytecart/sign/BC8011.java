@@ -1,11 +1,13 @@
 package nl.jboi.minecraft.bytecart.sign;
 
+import com.google.gson.JsonSyntaxException;
 import nl.jboi.minecraft.bytecart.ByteCart;
+import nl.jboi.minecraft.bytecart.api.sign.BCRouter;
 import nl.jboi.minecraft.bytecart.routing.RoutingTableFactory;
 import nl.jboi.minecraft.bytecart.routing.RoutingTableWritable;
-import nl.jboi.minecraft.bytecart.api.sign.BCRouter;
-import com.google.gson.JsonSyntaxException;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
@@ -13,7 +15,7 @@ import java.io.IOException;
 
 final class BC8011 extends BC8010 implements BCRouter, Triggable, HasRoutingTable {
 
-    BC8011(org.bukkit.block.Block block, org.bukkit.entity.Vehicle vehicle) {
+    BC8011(Block block, Vehicle vehicle) {
         super(block, vehicle, false);
     }
 
@@ -39,5 +41,4 @@ final class BC8011 extends BC8010 implements BCRouter, Triggable, HasRoutingTabl
     public String getName() {
         return "BC8011";
     }
-
 }

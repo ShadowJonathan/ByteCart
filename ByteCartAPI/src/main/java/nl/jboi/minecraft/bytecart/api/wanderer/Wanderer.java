@@ -109,7 +109,6 @@ public interface Wanderer {
         Scope(String name) {
             this.name = name;
         }
-
     }
 
     /**

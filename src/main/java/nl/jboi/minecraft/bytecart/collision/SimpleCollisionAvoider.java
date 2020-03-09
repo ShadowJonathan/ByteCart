@@ -1,10 +1,10 @@
 package nl.jboi.minecraft.bytecart.collision;
 
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.sign.Triggable;
-import nl.jboi.minecraft.bytecart.data.ExpirableMap;
 import nl.jboi.minecraft.bytecart.api.collision.IntersectionSide;
 import nl.jboi.minecraft.bytecart.api.hal.RegistryOutput;
+import nl.jboi.minecraft.bytecart.data.ExpirableMap;
+import nl.jboi.minecraft.bytecart.sign.Triggable;
 import org.bukkit.Location;
 
 /**
@@ -20,8 +20,7 @@ public class SimpleCollisionAvoider extends AbstractCollisionAvoider implements 
 
     private boolean reversed;
 
-
-    SimpleCollisionAvoider(Triggable ic, org.bukkit.Location loc) {
+    SimpleCollisionAvoider(Triggable ic, Location loc) {
         super(loc);
 
         if (ByteCart.debug)
@@ -61,7 +60,6 @@ public class SimpleCollisionAvoider extends AbstractCollisionAvoider implements 
         }
         this.setRecentlyUsed(true);
         return state;
-
     }
 
     /**
@@ -136,6 +134,4 @@ public class SimpleCollisionAvoider extends AbstractCollisionAvoider implements 
     protected ExpirableMap<Location, Boolean> getHasTrainMap() {
         return hasTrainMap;
     }
-
-
 }
