@@ -1,6 +1,6 @@
 package nl.jboi.minecraft.bytecart.plugins;
 
-import nl.jboi.minecraft.bytecart.HAL.AbstractIC;
+import nl.jboi.minecraft.bytecart.hal.AbstractIC;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;

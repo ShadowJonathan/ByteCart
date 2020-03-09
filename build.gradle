@@ -34,14 +34,39 @@ repositories {
 
 group = 'nl.jboi.minecraft'
 description = 'ByteCart'
-version = '3.2.2'
+version = '3.3.0'
 sourceCompatibility = '1.8'
 
 dependencies {
-    implementation 'us.dynmap:dynmap-api:2.5'
+    implementation('us.dynmap:dynmap-api:2.5') { transitive = false }
     implementation 'com.google.code.gson:gson:2.5'
-    implementation "nl.jboi.minecraft:ByteCartAPI:$version"
+    implementation project(":ByteCartAPI")
     compileOnly 'org.bukkit:bukkit:1.14.4+'
+}
+
+allprojects {
+    group(group)
+    version(version)
+}
+
+subprojects {
+    afterEvaluate {
+        publishing {
+            publications {
+                "$project.name"(MavenPublication) {
+                    from(project.components.java)
+                }
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        "$project.name"(MavenPublication) {
+            artifact(tasks["shadowJar"])
+        }
+    }
 }
 
 tasks {
@@ -52,14 +77,6 @@ tasks {
 
     shadowJar {
         archiveClassifier.set(null)
-    }
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifact(tasks["shadowJar"])
-        }
     }
 }
 

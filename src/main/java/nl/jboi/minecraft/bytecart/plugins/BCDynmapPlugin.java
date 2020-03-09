@@ -1,12 +1,12 @@
 package nl.jboi.minecraft.bytecart.plugins;
 
-import nl.jboi.minecraft.bytecart.AddressLayer.AddressFactory;
+import nl.jboi.minecraft.bytecart.address.AddressFactory;
 import nl.jboi.minecraft.bytecart.ByteCart;
-import nl.jboi.minecraft.bytecart.api.AddressLayer.Address;
-import nl.jboi.minecraft.bytecart.api.Event.*;
-import nl.jboi.minecraft.bytecart.api.HAL.IC;
-import nl.jboi.minecraft.bytecart.api.Signs.BCSign;
-import nl.jboi.minecraft.bytecart.api.Signs.Station;
+import nl.jboi.minecraft.bytecart.api.address.Address;
+import nl.jboi.minecraft.bytecart.api.event.*;
+import nl.jboi.minecraft.bytecart.api.hal.IC;
+import nl.jboi.minecraft.bytecart.api.sign.BCSign;
+import nl.jboi.minecraft.bytecart.api.sign.Station;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;

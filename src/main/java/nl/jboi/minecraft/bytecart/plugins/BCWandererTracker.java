@@ -1,9 +1,9 @@
 package nl.jboi.minecraft.bytecart.plugins;
 
-import nl.jboi.minecraft.bytecart.Util.LogUtil;
-import nl.jboi.minecraft.bytecart.api.Event.UpdaterCreateEvent;
-import nl.jboi.minecraft.bytecart.api.Event.UpdaterMoveEvent;
-import nl.jboi.minecraft.bytecart.api.Event.UpdaterRemoveEvent;
+import nl.jboi.minecraft.bytecart.util.LogUtil;
+import nl.jboi.minecraft.bytecart.api.event.UpdaterCreateEvent;
+import nl.jboi.minecraft.bytecart.api.event.UpdaterMoveEvent;
+import nl.jboi.minecraft.bytecart.api.event.UpdaterRemoveEvent;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
