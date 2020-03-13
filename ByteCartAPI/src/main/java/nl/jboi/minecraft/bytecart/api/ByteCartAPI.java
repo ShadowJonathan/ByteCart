@@ -1,8 +1,7 @@
 package nl.jboi.minecraft.bytecart.api;
 
 import nl.jboi.minecraft.bytecart.api.address.Resolver;
-
-import java.util.logging.Logger;
+import org.jetbrains.annotations.Nullable;
 
 
 public final class ByteCartAPI {
@@ -11,11 +10,13 @@ public final class ByteCartAPI {
     public static final int MAXSTATIONLOG = 8;
     public static final int MAXRING = 2048;
     public static final int MAXRINGLOG = 11;
+    @Nullable
     private static ByteCartPlugin plugin;
 
     /**
      * @return the plugin
      */
+    @Nullable
     public static ByteCartPlugin getPlugin() {
         return plugin;
     }
@@ -23,9 +24,9 @@ public final class ByteCartAPI {
     /**
      * @param plugin the plugin to set
      */
-    public static void setPlugin(ByteCartPlugin plugin) {
+    public static void setPlugin(@Nullable ByteCartPlugin plugin) throws IllegalStateException {
         if (ByteCartAPI.plugin != null && plugin != null) {
-            throw new UnsupportedOperationException("Cannot redefine singleton Plugin");
+            throw new IllegalStateException("Cannot redefine singleton Plugin");
         }
 
         ByteCartAPI.plugin = plugin;
@@ -34,7 +35,9 @@ public final class ByteCartAPI {
     /**
      * @return the resolver registered
      */
+    @Nullable
     public static Resolver getResolver() {
+        if (plugin == null) return null;
         return plugin.getResolver();
     }
 
@@ -43,16 +46,8 @@ public final class ByteCartAPI {
      *
      * @param resolver the resolver provided
      */
-    public static void setResolver(Resolver resolver) {
+    public static void setResolver(@Nullable Resolver resolver) throws NullPointerException {
+        if (plugin == null) throw new NullPointerException("Cannot set resolver: Plugin is null");
         plugin.setResolver(resolver);
-    }
-
-    /**
-     * Get the logger
-     *
-     * @return the logger
-     */
-    public static Logger getLogger() {
-        return plugin.getLog();
     }
 }

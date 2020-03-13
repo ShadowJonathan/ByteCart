@@ -2,6 +2,7 @@ package nl.jboi.minecraft.bytecart.api;
 
 import nl.jboi.minecraft.bytecart.api.address.Resolver;
 import nl.jboi.minecraft.bytecart.api.wanderer.WandererManager;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.logging.Logger;
 
@@ -10,6 +11,7 @@ public interface ByteCartPlugin {
     /**
      * @return the resolver registered
      */
+    @Nullable
     Resolver getResolver();
 
     /**
@@ -17,14 +19,7 @@ public interface ByteCartPlugin {
      *
      * @param resolver the resolver provided
      */
-    void setResolver(Resolver resolver);
-
-    /**
-     * Get the logger
-     *
-     * @return the logger
-     */
-    Logger getLog();
+    void setResolver(@Nullable Resolver resolver);
 
     /**
      * @return the wanderer factory
